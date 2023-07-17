@@ -1,8 +1,8 @@
-nav {
+.nav {
   text-align: center;
   padding: 20px;
   font-weight: bold;
-  font-size: 2rem;
-  color: #0d00ff;
-  box-shadow: 0 1px 12px 0px gray;
+  font-size: 1.6rem;
+  color: #01579b;
+  box-shadow: 0 0.8px 15px 0px gray;
 }

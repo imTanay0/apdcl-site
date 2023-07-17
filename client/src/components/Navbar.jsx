@@ -2,7 +2,7 @@ import styles from "../css/navbar.module.css";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className={styles.nav}>
       ASSAM POWER DISTRIBUTION COMPANY LIMITED
     </nav>
   )

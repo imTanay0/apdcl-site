@@ -1,0 +1,17 @@
+.inputFormContainer {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 40px 60px;
+  margin-top: 50px;
+  border: 1px solid #407094;
+  border-radius: 10px;
+  row-gap: 5px;
+  background-color: #ffffff
+}
+
+.inputFormContainer input {
+  margin-bottom: 7px;
+  padding: 5.8px 10px;
+  border-radius: 2px;
+}
