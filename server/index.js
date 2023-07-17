@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import connectDB from './database/ConnectDB.js'
 import cookieParser from 'cookie-parser'
 import userRoutes from './routes/userRoutes.js'
+import circleRoutes from './routes/circleRoutes.js'
 
 // Config
 dotenv.config({ path: 'database/.env' })
@@ -16,6 +17,7 @@ app.use(cookieParser())
 
 // routes
 app.use('/api/v1/user', userRoutes)
+app.use('/api/v1/circle', circleRoutes)
 
 // connect to database
 connectDB()

@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const circleSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-});
+})
 
-export default mongoose.model("Circle", circleSchema);
+export default mongoose.model('Circle', circleSchema)
