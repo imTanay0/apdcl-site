@@ -5,13 +5,10 @@ const subDivisionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  injection: {
+  MUinjection: {
     type: Number,
   },
   unitBilled: {
-    type: Number,
-  },
-  totalCollectionIRCA: {
     type: Number,
   },
   noOfConsumers: {
@@ -20,7 +17,10 @@ const subDivisionSchema = new mongoose.Schema({
   noOfBillsServed: {
     type: Number,
   },
-  totalArea: {
+  totalCollectionIRCA: {
+    type: Number,
+  },
+  totalArrear: {
     type: Number,
   },
   division: {
