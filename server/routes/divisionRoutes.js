@@ -10,5 +10,4 @@ router.get("/getall", GetAllDivisions);
 
 router.get("/get", GetDivisionsByCircle);
 
-
 export default router;
