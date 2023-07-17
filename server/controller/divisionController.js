@@ -67,3 +67,40 @@ export const GetAllDivisions = async (req, res) => {
     });
   }
 };
+
+// Get divisions under a cirle
+export const GetDivisionsByCircle = async (req, res) => {
+  try {
+
+    const { circleName } = req.body;
+
+    const circle = await Circle.findOne({ name: circleName });
+
+    if (!circle) {
+      return res.status(404).json({
+        success: false,
+        message: "Eroor, Check the Circle name again."
+      })
+    }
+
+    const divisions = await Division.find({ "circle.name": circleName })
+
+    if (!divisions || divisions.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "No divisions found.",
+      })
+    }
+
+    res.status(200).json({
+      success: true,
+      divisions
+    })
+    
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
