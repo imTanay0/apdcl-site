@@ -26,6 +26,30 @@ const subDivisionSchema = new mongoose.Schema({
   totalArrear: {
     type: Number,
   },
+  date: {
+    month: {
+      type: String,
+      enum: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
+    },
+    year: {
+      type: Number,
+      min: 2019,
+      max: 2021,
+    },
+  },
   division: {
     name: {
       type: String,
