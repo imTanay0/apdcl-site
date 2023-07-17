@@ -1,9 +1,9 @@
-import express from "express";
+import express from 'express'
 
-import { InsertDivision } from "../controller/divisionController.js";
+import { InsertDivision } from '../controller/divisionController.js'
 
-const router = express.Router();
+const router = express.Router()
 
-router.post("/add", InsertDivision);
+router.post('/add', InsertDivision)
 
-export default router;
+export default router

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const subDivisionSchema = new mongoose.Schema({
   name: {
@@ -30,18 +30,18 @@ const subDivisionSchema = new mongoose.Schema({
     month: {
       type: String,
       enum: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
       ],
     },
     year: {
@@ -56,9 +56,9 @@ const subDivisionSchema = new mongoose.Schema({
     },
     id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Division",
+      ref: 'Division',
     },
   },
-});
+})
 
-export default mongoose.model("SubDivision", subDivisionSchema);
+export default mongoose.model('SubDivision', subDivisionSchema)
