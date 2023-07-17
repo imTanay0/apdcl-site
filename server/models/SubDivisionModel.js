@@ -23,6 +23,15 @@ const subDivisionSchema = new mongoose.Schema({
   totalArea: {
     type: Number,
   },
+  division: {
+    name: {
+      type: String,
+    },
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Division",
+    },
+  },
 });
 
 export default mongoose.model("SubDivision", subDivisionSchema);
