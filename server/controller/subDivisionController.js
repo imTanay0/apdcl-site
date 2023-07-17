@@ -1,6 +1,7 @@
 import Division from '../models/DivisionModel.js'
 import SubDivision from '../models/SubDivisionModel.js'
 
+// Insert a new sub division
 export const insertSubDivision = async (req, res) => {
   try {
     const {
@@ -59,6 +60,32 @@ export const insertSubDivision = async (req, res) => {
       success: true,
       subDivision,
     })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    })
+  }
+}
+
+// Get all sub divisions
+export const GetAllSubDivisions = async (req, res) => {
+  try {
+
+    const subDivisions = await SubDivision.find();
+
+    if (!subDivisions || subDivisions.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "No subdivisions found."
+      });
+    }
+
+    res.status(201).json({
+      success: true,
+      subDivisions,
+    })
+    
   } catch (error) {
     res.status(500).json({
       success: false,
