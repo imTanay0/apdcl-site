@@ -35,7 +35,7 @@ export const getAllCircles = async (req, res) => {
   try {
     const circles = await Circle.find()
 
-    if (!circles) {
+    if (!circles || circle.length === 0) {
       return res.status(404).json({
         success: false,
         message: 'No circles found',
