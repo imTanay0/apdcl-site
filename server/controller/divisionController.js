@@ -11,8 +11,8 @@ export const InsertDivision = async (req, res) => {
     if (existingDivision) {
       return res.status(409).json({
         success: false,
-        message: "Division already exists."
-      })
+        message: "Division already exists.",
+      });
     }
 
     const circle = await Circle.findOne({ name: circleName });
@@ -20,7 +20,7 @@ export const InsertDivision = async (req, res) => {
     if (!circle) {
       return res.status(404).json({
         success: false,
-        message: "No circles found. Check the Circle name again."
+        message: "No circles found. Check the Circle name again.",
       });
     }
 
@@ -28,15 +28,38 @@ export const InsertDivision = async (req, res) => {
       name,
       circle: {
         name: circleName,
-        id: circle._id
-      }
+        id: circle._id,
+      },
     });
 
     res.status(200).json({
       success: true,
       division: newDivision,
-    })
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 
+// Get all divisions
+export const GetAllDivisions = async (req, res) => {
+  try {
+    const divisions = await Division.find();
+
+    if (!divisions) {
+      return res.status(404).json({
+        success: false,
+        message: "No divisions available.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      divisions,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
