@@ -4,6 +4,7 @@ import connectDB from "./database/ConnectDB.js";
 import cookieParser from "cookie-parser";
 
 import userRoutes from "./routes/userRoutes.js";
+import circleRoutes from "./routes/circleRoutes.js";
 import divisionRoutes from "./routes/divisionRoutes.js";
 
 // Config
