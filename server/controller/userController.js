@@ -9,10 +9,10 @@ export const register = async (req, res) => {
 
     let user = User.findOne({ email });
 
-    if (!user) {
-      return res.status(400).json({
+    if (user) {
+      return res.status(409).json({
         success: false,
-        message: "Invalid Email or Password",
+        message: "Already signed up. Login now",
       });
     }
 

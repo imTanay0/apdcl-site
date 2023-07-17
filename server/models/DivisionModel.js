@@ -8,9 +8,11 @@ const divisionSchema = new mongoose.Schema({
     name: {
       type: String,
     },
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Circle",
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Circle",
+    }
   },
 });
 
-export default mongoose.model("Diviion", divisionSchema);
+export default mongoose.model("Division", divisionSchema);
