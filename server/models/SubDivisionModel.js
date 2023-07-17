@@ -20,6 +20,9 @@ const subDivisionSchema = new mongoose.Schema({
   totalCollectionIRCA: {
     type: Number,
   },
+  currentDemandIRCA: {
+    type: Number,
+  },
   totalArrear: {
     type: Number,
   },
