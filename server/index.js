@@ -19,6 +19,8 @@ app.use(cookieParser());
 // routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/division", divisionRoutes);
+app.use('/api/v1/user', userRoutes)
+app.use('/api/v1/circle', circleRoutes)
 
 // connect to database
 connectDB();
