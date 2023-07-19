@@ -3,7 +3,7 @@ import styles from "../css/inputForm.module.css"
 const InputForm = () => {
   return (
     <form className={styles.inputFormContainer}>
-      <label htmlFor="circle">Select circle: </label>
+      <label htmlFor="circle">Circle</label>
       <input
         list="circleOptions"
         placeholder="Select a circle"
@@ -15,7 +15,7 @@ const InputForm = () => {
         <option value="Tinsukia">Tinsukia</option>
       </datalist>
 
-      <label>Select Division: </label>
+      <label>Division</label>
       <input
         list="divisionOptions"
         placeholder="Select a division"
@@ -28,7 +28,7 @@ const InputForm = () => {
         <option value="Nagaon Division-III">Nagaon Division-III</option>
       </datalist>
 
-      <label>Select Sub Division: </label>
+      <label>Division</label>
       <input
         list="subDivisionOptions"
         placeholder="Select a sub-division"
@@ -41,9 +41,10 @@ const InputForm = () => {
         <option value="Nagaon S/D-III">Nagaon S/D-III</option>
       </datalist>
 
-      <label>Enter the year:</label>
+      <label>Year</label>
       <input 
         list="yearOptions"
+        placeholder="Select a year"
         required
         onChange={(e) => console.log(e.target.value)}
       />
@@ -53,9 +54,10 @@ const InputForm = () => {
         <option value="2021">2021</option>
       </datalist>
 
-      <label>Enter the month</label>
+      <label>Month</label>
       <input
         list="monthOptions"
+        placeholder="Select a month"
         required
         onChange={(e) => console.log(e.target.value)}
       />
@@ -73,6 +75,11 @@ const InputForm = () => {
         <option value="November">November</option>
         <option value="December">December</option>
       </datalist>
+
+      <button className={styles.btn}>
+        Submit
+      </button>
+      
     </form>
   )
 }

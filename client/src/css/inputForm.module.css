@@ -2,16 +2,49 @@
   display: flex;
   flex-direction: column;
   width: 500px;
-  padding: 40px 60px;
+  padding: 20px;
   margin-top: 50px;
-  border: 1px solid #407094;
-  border-radius: 10px;
-  row-gap: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* row-gap: 5px; */
   background-color: #ffffff
 }
 
+.inputFormContainer label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
 .inputFormContainer input {
-  margin-bottom: 7px;
-  padding: 5.8px 10px;
-  border-radius: 2px;
+  width: 95.5%;
+  margin-bottom: 1rem;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.inputFormContainer input:focus {
+  outline: none;
+  border-color: #6b7ae8;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #01579b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #003f6f;
 }
