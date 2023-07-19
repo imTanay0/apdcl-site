@@ -1,11 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../css/Register.module.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const Register = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const submitHandler = async (e) => {
+    try {
+      e.preventDefault()
+
+      console.log(name, email, password)
+
+      await axios.post(
+        'http://localhost:8080/api/v1/user/register',
+        {
+          name,
+          email,
+          password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          withCredentials: true,
+        }
+      )
+
+      console.log('Registered Successful')
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   return (
     <main className={styles.formContainer}>
-      <form action="" className={styles.container}>
+      <form className={styles.container} onSubmit={submitHandler}>
         <div className={styles.formGroup}>
           <label htmlFor="name" className={styles.label}>
             Name
@@ -15,6 +47,9 @@ const Register = () => {
             id="name"
             className={styles.input}
             placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -26,6 +61,9 @@ const Register = () => {
             id="email"
             className={styles.input}
             placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -37,6 +75,9 @@ const Register = () => {
             id="password"
             className={styles.input}
             placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <button type="submit" className={styles.btn}>

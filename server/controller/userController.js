@@ -12,8 +12,8 @@ export const register = async (req, res) => {
     if (user) {
       return res.status(409).json({
         success: false,
-        message: "Already signed up. Login now",
-      });
+        message: 'Already signed up. Login now',
+      })
     }
 
     const hashPassword = await bcrypt.hash(password, 10)
@@ -31,6 +31,8 @@ export const register = async (req, res) => {
       .cookie('token', token, {
         httpOnly: true,
         maxAge: 60 * 60 * 1000,
+        SameSite: 'none',
+        secure: 'true',
       })
       .json({
         success: true,
