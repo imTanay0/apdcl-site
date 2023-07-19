@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './database/ConnectDB.js'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
 import userRoutes from './routes/userRoutes.js'
 import circleRoutes from './routes/circleRoutes.js'
@@ -17,6 +18,13 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URI],
+    methods: ['GET', 'POST', 'PUT'],
+    credentials: true,
+  })
+)
 
 // routes
 app.use('/api/v1/user', userRoutes)
