@@ -1,3 +1,121 @@
-.home {
-  background-color: red;
+/* .home {
+  background-color: yellow;
+  margin : 0px;
 }
+
+svg {
+  width: 1em;
+  height: 1em;
+  fill: currentcolor;
+}
+
+.fir{
+color : #01579b;
+text-align: left;
+font-size: 1.2rem;
+font-weight: 600;
+letter-spacing: 0;
+}
+.sec{
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0;
+color : #01579b;
+text-align: left;
+}
+.logoap{
+    height: 45px;
+    width: 45px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    float: left;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.sp{
+  color :  #dc3545;
+  font-size: .8rem;
+     margin-top: 5px;
+     margin-right: 50px;
+     margin-bottom: 20px;
+     float: right;
+     text-shadow: 0 0 1px rgba(0,0,0,.3607843137254902);
+ }
+ .b-icon.bi {
+  display: inline-block;
+  overflow: visible;
+  vertical-align: -0.15em;
+}
+ 
+  */
+
+  .home {
+    background-color: #ffdd00;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  .fir{
+    color : #01579b;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0;
+    }
+    .sec{
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0;
+    color : #01579b;
+    white-space: nowrap; 
+    /* text-align: left; */
+    }
+  .logoap {
+    height: 50px;
+    width: 50px;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  float: left;
+max-width: 100%;
+  }
+  
+  .headerContent {
+    flex: 1;
+    margin-left: 10px;
+  }
+  
+  .customerSupport {
+    display: flex;
+    align-items: center;
+  }
+  
+  .supportIcon {
+    margin-right: 5px;
+  }
+  
+  .supportDetails {
+    display: flex;
+    align-items: center;
+    /* margin-right: 200px; */
+  }
+  .supportEmail {
+    display: flex;
+    align-items: center;
+    /* margin-left: 10px; */
+    padding-left: 10px;
+  }
+  .supportEmail a {
+    text-decoration: none;
+    color: #000;
+    margin-left: 5px;
+  }
+  

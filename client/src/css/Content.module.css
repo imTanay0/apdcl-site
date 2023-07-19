@@ -1,0 +1,76 @@
+.cont {
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin: 0px;
+  border-radius: 8px;
+  font-weight: bold;
+
+}
+
+.cont {
+  background-image: url('https://www.tripwire.com/sites/default/files/Defending-the-Bulk-Power-Grid.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  height: 100vh;
+}
+
+.cont p {
+  color: #000000;
+  font-weight: bolder;
+  max-width: 50%;
+}
+
+.contentBox {
+  margin: 20px auto;
+}
+
+
+
+.dashboardBox {
+  width: 50%;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid black;
+}
+
+.dashboardHeading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #01579b;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.dashboardContent {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+
+.startButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #01579b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 220px;
+  margin-top: 10px;
+}
