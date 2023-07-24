@@ -31,7 +31,7 @@ export const addCircle = async (req, res) => {
 };
 
 // Get All Circles
-export const getAllCircles = async (req, res) => {
+export const getAllCircleNames = async (req, res) => {
   try {
     const circles = await Circle.find();
 
@@ -42,9 +42,15 @@ export const getAllCircles = async (req, res) => {
       });
     }
 
+    const circleNames = circles.map(circle => {
+      return circle.name;
+    })
+
+    console.log(circleNames);
+
     res.status(200).json({
       success: true,
-      circles,
+      circleNames,
     });
   } catch (error) {
     res.status(500).json({
