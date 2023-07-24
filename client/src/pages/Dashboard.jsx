@@ -2,9 +2,9 @@
 import InputForm from "../components/InputForm"
 import OutputForm from "../components/OutputForm"
 
-import styles from "../css/Contact.module.css";
+import styles from "../css/Dashboard.module.css";
 
-const Contact = () => {
+const Dashboard = () => {
   return (
     <>
       {/* <Navbar /> */}
@@ -16,4 +16,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Dashboard;
