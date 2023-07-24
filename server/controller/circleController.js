@@ -46,8 +46,6 @@ export const getAllCircleNames = async (req, res) => {
       return circle.name;
     })
 
-    console.log(circleNames);
-
     res.status(200).json({
       success: true,
       circleNames,
