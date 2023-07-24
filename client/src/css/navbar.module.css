@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background-color: #b5cdd7; */
   background-color: #ffdd00;
   box-shadow: 0 0.8px 15px 0px gray;
 }
@@ -58,13 +57,19 @@
 .supportDetails {
   display: flex;
   column-gap: 2px;
-  align-items: center;
+}
+
+.supportDetails svg {
+  margin-top: 1px;
 }
 
 .supportEmail {
   display: flex;
-  align-items: center;
   padding-left: 10px;
+}
+
+.supportEmail svg {
+  margin-top: 2px;
 }
 
 .supportEmail a {
@@ -87,9 +92,14 @@
 .btnContainer {
   display: flex;
   align-items: center;
-  padding: 20px;
   column-gap: 15px;
   font-size: 12px;
+  padding-right: 10px;
+
+}
+
+.btnContainer span {
+  font-size: 0.9rem;
 }
 
 .btn {

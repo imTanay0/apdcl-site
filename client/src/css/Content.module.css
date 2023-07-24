@@ -4,11 +4,10 @@
   margin: 0px;
   border-radius: 8px;
   font-weight: bold;
-
 }
 
 .cont {
-  background-image: url('https://www.tripwire.com/sites/default/files/Defending-the-Bulk-Power-Grid.jpg');
+  background-image: url("https://www.tripwire.com/sites/default/files/Defending-the-Bulk-Power-Grid.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,15 +22,19 @@
 }
 
 .contentBox {
-  margin: 20px auto;
+  padding: 30px 50px;
 }
 
-
+.contentBox h2,
+p {
+  margin-bottom: 10px;
+}
 
 .dashboardBox {
   width: 50%;
   max-width: 500px;
-  padding: 10px;
+  padding: 20px;
+  margin: 5px 50px;
   border-radius: 8px;
   border: 2px solid black;
 }
@@ -46,13 +49,13 @@
 }
 
 .dashboardContent {
-  margin-top: 10px;
+  margin: 10px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
-.buttonContainer {
+.btnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,17 +63,19 @@
   text-align: center;
 }
 
-
-
 .startButton {
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
+  padding: 12px;
+  font-size: 0.9rem;
+  width: 20%;
+  text-align: center;
   background-color: #01579b;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-left: 220px;
-  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.startButton:hover {
+  background-color: #003f6f;
 }

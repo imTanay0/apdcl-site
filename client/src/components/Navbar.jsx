@@ -57,7 +57,7 @@ const Navbar = () => {
               ></path>
               <path d="M.05 3.555C.017 3.698 0 3.847 0 4v.697l5.803 3.546L0 11.801V12c0 .306.069.596.192.856l6.57-4.027L8 9.586l1.239-.757 6.57 4.027c.122-.26.191-.55.191-.856v-.2l-5.803-3.557L16 4.697V4c0-.153-.017-.302-.05-.445L8 8.414.05 3.555z"></path>
             </svg>
-            <a href="mailto:support@apdcl.org">support@apdcl.org</a>
+            <p><a href="mailto:support@apdcl.org">support@apdcl.org</a></p>
           </div>
         </div>
         <div className={styles.linkContainer}>
@@ -74,7 +74,7 @@ const Navbar = () => {
         <Link to="/register">
           <button className={styles.btn}>Sign up</button>
         </Link>
-        <p>Or</p>
+        <span>Or</span>
         <Link to="/login">
           <button className={styles.btn}>Sign in</button>
         </Link>
