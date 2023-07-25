@@ -102,3 +102,45 @@ export const GetDivisionsByCircle = async (req, res) => {
     })
   }
 }
+
+// Get all Names of the Divisions under a Circle
+export const GetDivisionNamesByCircle = async (req, res) => {
+  try {
+    const circleName = req.query.circleName;
+
+    const circle = await Circle.findOne({ name: circleName })
+
+    if (!circle) {
+      return res.status(404).json({
+        success: false,
+        message: 'Error, Check the Circle name again.',
+      })
+    }
+
+    const divisions = await Division.find({ 'circle.name': circleName })
+
+    if (!divisions || divisions.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'No divisions found.',
+      })
+    }
+
+    const divisionNames = divisions.map((division) => (
+      division.name
+    ))
+
+    console.log(divisionNames);
+
+    res.status(200).json({
+      success: true,
+      divisionNames,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    })
+  }
+}
+

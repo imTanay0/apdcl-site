@@ -4,6 +4,7 @@ import {
   InsertDivision,
   GetAllDivisions,
   GetDivisionsByCircle,
+  GetDivisionNamesByCircle
 } from '../controller/divisionController.js'
 
 const router = express.Router()
@@ -14,4 +15,6 @@ router.get('/getall', GetAllDivisions)
 
 router.get('/get', GetDivisionsByCircle)
 
-export default router
+router.get('/getallnames', GetDivisionNamesByCircle);
+
+export default router;

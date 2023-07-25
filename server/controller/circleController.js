@@ -30,7 +30,7 @@ export const addCircle = async (req, res) => {
   }
 };
 
-// Get All Circles
+// Get All Circle's Names
 export const getAllCircleNames = async (req, res) => {
   try {
     const circles = await Circle.find();
