@@ -113,15 +113,55 @@ export const GetSubDivisionsByDivision = async (req, res) => {
     if (!subDivisions || subDivisions.length === 0) {
       return res.status(400).json({
         success: false,
-        message: "No Sub Divisions found."
-      })
+        message: "No Sub Divisions found.",
+      });
     }
 
     res.status(201).json({
       success: true,
       subDivisions,
-    })
-    
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// Get Sub-Division's Name Under a Division
+export const GetSubDivisionNamesByDivision = async (req, res) => {
+  try {
+    const divisionName = req.query.divisionName;
+
+    const division = await Division.findOne({ name: divisionName });
+
+    if (!division) {
+      return res.status(404).json({
+        success: false,
+        message: "Incorrect Division name",
+      });
+    }
+
+    const subDivisions = await SubDivision.find({
+      "division.name": divisionName,
+    });
+
+    if (!subDivisions || subDivisions.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "No Sub Divisions found.",
+      });
+    }
+
+    const subDivisionNames = subDivisions.map(
+      (subDivision) => subDivision.name
+    );
+
+    res.status(201).json({
+      success: true,
+      subDivisionNames,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
