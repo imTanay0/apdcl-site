@@ -9,7 +9,7 @@ const OutputForm = ({ data }) => {
       <h2>Report</h2>
       <div className={styles.container}>
         {!subDivisionDetails.MUinjection ? (
-          <p>Fill up and submit the above form to check the report.</p>
+          <p>Fill up and submit the above form with correct data to generate the report</p>
         ) : (
           <div>
             <label>MU injection</label>

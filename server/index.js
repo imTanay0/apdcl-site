@@ -35,7 +35,7 @@ app.use('/api/v1/subdivision', subDivisionRoutes)
 // connect to database
 connectDB()
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send(`Hello Users, Check your app on ${process.env.FRONTEND_URI}!`))
 app.listen(process.env.PORT, () =>
   console.log(`App listening on port http://localhost:${process.env.PORT}`)
 )
