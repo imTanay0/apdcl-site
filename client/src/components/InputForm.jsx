@@ -15,12 +15,10 @@ const InputForm = ({ onDataUpdate }) => {
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
 
-  // const [subDivisionDetails, setSubDivisionDetails] = useState({});
-
   useEffect(() => {
     const getAllCircleNames = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/circle/getAllNames',
+        const response = await axios.get('https://apdcl-site-server.onrender.com/api/v1/circle/getAllNames',
           {
             headers: {
               'Content-Type': 'application/json',
@@ -38,7 +36,7 @@ const InputForm = ({ onDataUpdate }) => {
 
     const getAllDivisionNames = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/division/getallnames?circleName=${circleName}`,
+        const response = await axios.get(`https://apdcl-site-server.onrender.com/api/v1/division/getallnames?circleName=${circleName}`,
           {
             headers: {
               'Content-Type': 'applicationn/json',
@@ -55,7 +53,7 @@ const InputForm = ({ onDataUpdate }) => {
 
     const getAllSubDivisionNames = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/subdivision/getallnames?divisionName=${divisionName}`,
+        const response = await axios.get(`https://apdcl-site-server.onrender.com/api/v1/subdivision/getallnames?divisionName=${divisionName}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -81,7 +79,7 @@ const InputForm = ({ onDataUpdate }) => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/v1/subdivision/getdetails?subDivisionName=${subDivisionName}&year=${year}&month=${month}`,
+        `https://apdcl-site-server.onrender.com/api/v1/subdivision/getdetails?subDivisionName=${subDivisionName}&year=${year}&month=${month}`,
         {
           headers: {
             'Content-Type': 'application/json',
