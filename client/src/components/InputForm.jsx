@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-import styles from "../css/inputForm.module.css"
+import styles from "../css/inputForm.module.css";
 
-const InputForm = () => {
-
+// eslint-disable-next-line react/prop-types
+const InputForm = ({ onDataUpdate }) => {
   const [allCircleNames, setAllCircleNames] = useState([]);
   const [allDivisionNames, setAllDivisionNames] = useState([]);
   const [allSubDivisionNames, setAllSubDivisionNames] = useState([]);
@@ -15,8 +15,9 @@ const InputForm = () => {
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
 
-  useEffect(() => {
+  // const [subDivisionDetails, setSubDivisionDetails] = useState({});
 
+  useEffect(() => {
     const getAllCircleNames = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/v1/circle/getAllNames',
@@ -78,7 +79,31 @@ const InputForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    alert("Submit");
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/v1/subdivision/getdetails?subDivisionName=${subDivisionName}&year=${year}&month=${month}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
+      )
+
+      const data = response.data.subDivision;
+
+      onDataUpdate(data);
+      // setSubDivisionDetails(data);
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setAllDivisionNames([]);
+      setAllSubDivisionNames([]);
+      setCircleName('');
+      setDivisionName('');
+      setSubDivisionName('');
+      setYear('');
+      setMonth('');
+    }
   }
 
   return (
