@@ -4,6 +4,7 @@ import {
   GetAllSubDivisions,
   GetSubDivisionsByDivision,
   GetSubDivisionNamesByDivision,
+  GetSubDivision,
 } from "../controller/subDivisionController.js";
 
 const router = express.Router();
@@ -16,5 +17,6 @@ router.get("/get", GetSubDivisionsByDivision);
 
 router.get("/getallnames", GetSubDivisionNamesByDivision);
 
+router.get("/getdetails", GetSubDivision);
 
 export default router;

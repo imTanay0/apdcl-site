@@ -169,3 +169,33 @@ export const GetSubDivisionNamesByDivision = async (req, res) => {
     });
   }
 };
+
+// Get Sub-Division Details
+export const GetSubDivision = async (req, res) => {
+  try {
+    const { subDivisionName, year, month } = req.body;
+
+    const subDivision = await SubDivision.findOne({
+      name: subDivisionName,
+      "date.month": month,
+      "date.year": year,
+    });
+
+    if (!subDivision) {
+      return res.status(404).json({
+        success: false,
+        message: "No Sub-Division Found.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      subDivision,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
