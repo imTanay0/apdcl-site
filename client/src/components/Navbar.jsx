@@ -64,8 +64,8 @@ const Navbar = () => {
           <Link to='/'>
             <p className={styles.pageLink}>Home</p>
           </Link>
-          <Link to='/dashboard'>
-            <p className={styles.pageLink}>Dashboard</p>
+          <Link to='/report'>
+            <p className={styles.pageLink}>Report</p>
           </Link>
         </div>
       </div>

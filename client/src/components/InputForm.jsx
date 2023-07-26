@@ -1,18 +1,100 @@
+import { useEffect, useState } from "react"
+import axios from "axios";
+
 import styles from "../css/inputForm.module.css"
 
 const InputForm = () => {
+
+  const [allCircleNames, setAllCircleNames] = useState([]);
+  const [allDivisionNames, setAllDivisionNames] = useState([]);
+  const [allSubDivisionNames, setAllSubDivisionNames] = useState([]);
+
+  const [circleName, setCircleName] = useState('');
+  const [divisionName, setDivisionName] = useState('');
+  const [subDivisionName, setSubDivisionName] = useState('');
+  const [year, setYear] = useState('');
+  const [month, setMonth] = useState('');
+
+  useEffect(() => {
+
+    const getAllCircleNames = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/v1/circle/getAllNames',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+
+        const data = response.data.circleNames;
+
+        setAllCircleNames(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    const getAllDivisionNames = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/v1/division/getallnames?circleName=${circleName}`,
+          {
+            headers: {
+              'Content-Type': 'applicationn/json',
+            }
+          }
+        )
+        const data = response.data.divisionNames;
+
+        setAllDivisionNames(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    const getAllSubDivisionNames = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/v1/subdivision/getallnames?divisionName=${divisionName}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+
+        const data = response.data.subDivisionNames;
+
+        setAllSubDivisionNames(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    getAllCircleNames();
+    getAllDivisionNames();
+    getAllSubDivisionNames();
+  }, [circleName, divisionName])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    alert("Submit");
+  }
+
   return (
-    <form className={styles.inputFormContainer}>
+    <form className={styles.inputFormContainer} onSubmit={handleSubmit}>
       <label htmlFor="circle">Circle</label>
       <input
         list="circleOptions"
         placeholder="Select a circle"
         required
-        onChange={(e) => console.log(e.target.value)}
+        value={circleName}
+        onChange={(e) => setCircleName(e.target.value)}
       />
       <datalist id='circleOptions'>
-        <option value="Nagaon">Nagaon</option>
-        <option value="Tinsukia">Tinsukia</option>
+        {allCircleNames.map((circleName, idx) => (
+          <option value={circleName} key={idx}>{circleName}</option>
+        ))}
       </datalist>
 
       <label>Division</label>
@@ -20,33 +102,36 @@ const InputForm = () => {
         list="divisionOptions"
         placeholder="Select a division"
         required
-        onChange={(e) => console.log(e.target.value)}
+        value={divisionName}
+        onChange={(e) => setDivisionName(e.target.value)}
       />
       <datalist id="divisionOptions">
-        <option value="Nagaon Division-I">Nagaon Division-I</option>
-        <option value="Nagaon Division-II">Nagaon Division-II</option>
-        <option value="Nagaon Division-III">Nagaon Division-III</option>
+        {allDivisionNames.map((divisionName, idx) => (
+          <option value={divisionName} key={idx}>{divisionName}</option>
+        ))}
       </datalist>
 
-      <label>Division</label>
+      <label>Sub Division</label>
       <input
         list="subDivisionOptions"
         placeholder="Select a sub-division"
         required
-        onChange={(e) => console.log(e.target.value)}
+        value={subDivisionName}
+        onChange={(e) => setSubDivisionName(e.target.value)}
       />
       <datalist id="subDivisionOptions">
-        <option value="Nagaon S/D-I">Nagaon S/D-I</option>
-        <option value="Nagaon S/D-II">Nagaon S/D-II</option>
-        <option value="Nagaon S/D-III">Nagaon S/D-III</option>
+        {allSubDivisionNames.map((subDivisionName, idx) => (
+          <option value={subDivisionName} key={idx}>{subDivisionName}</option>
+        ))}
       </datalist>
 
       <label>Year</label>
-      <input 
+      <input
         list="yearOptions"
         placeholder="Select a year"
         required
-        onChange={(e) => console.log(e.target.value)}
+        value={year}
+        onChange={(e) => setYear(e.target.value)}
       />
       <datalist id="yearOptions">
         <option value="2019">2019</option>
@@ -59,7 +144,8 @@ const InputForm = () => {
         list="monthOptions"
         placeholder="Select a month"
         required
-        onChange={(e) => console.log(e.target.value)}
+        value={month}
+        onChange={(e) => setMonth(e.target.value)}
       />
       <datalist id="monthOptions">
         <option value="January">January</option>
@@ -76,11 +162,11 @@ const InputForm = () => {
         <option value="December">December</option>
       </datalist>
 
-      <button className={styles.btn}>
+      <button className={styles.btn} type='submit'>
         Submit
       </button>
-      
-    </form>
+
+    </form >
   )
 }
 

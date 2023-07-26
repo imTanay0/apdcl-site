@@ -4,7 +4,7 @@ import OutputForm from "../components/OutputForm"
 
 import styles from "../css/Dashboard.module.css";
 
-const Dashboard = () => {
+const Report = () => {
   return (
     <>
       {/* <Navbar /> */}
@@ -16,4 +16,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+export default Report;
