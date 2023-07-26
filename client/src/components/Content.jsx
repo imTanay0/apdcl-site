@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from '../css/Content.module.css';
+import styles from '../css/content.module.css';
 
 const Content = () => {
   return (

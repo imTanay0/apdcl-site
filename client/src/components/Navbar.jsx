@@ -5,7 +5,6 @@ import styles from "../css/navbar.module.css";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      {/* <div className={styles.heady}> */}
       <img
         src="https://www.apdcl.org/website/img/apdcl_logo.b56b6858.png"
         alt="APDCL Logo"
