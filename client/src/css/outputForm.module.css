@@ -39,3 +39,14 @@ h2 {
   outline: none;
   border-color: #6b7ae8;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .container input {
+    width: 91.5%;
+  }
+}

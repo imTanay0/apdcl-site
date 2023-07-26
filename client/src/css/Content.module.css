@@ -4,9 +4,7 @@
   margin: 0px;
   border-radius: 8px;
   font-weight: bold;
-}
 
-.cont {
   background-image: url("https://www.tripwire.com/sites/default/files/Defending-the-Bulk-Power-Grid.jpg");
   background-size: cover;
   background-position: center;
@@ -99,6 +97,7 @@ p {
 
 @media screen and (max-width: 480px) {
   .cont {
+    width: 100%;
     padding: 10px;
   }
 

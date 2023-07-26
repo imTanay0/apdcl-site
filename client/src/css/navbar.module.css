@@ -1,3 +1,7 @@
+nav {
+  width: 100%;
+}
+
 .navbar {
   padding: 20px;
   display: flex;
@@ -193,12 +197,32 @@
 }
 
 @media screen and (max-width: 500px) {
-  .headerContent {
-    padding-left: 80px;
+  .navbar {
+    padding: 10px;
+    width: 100%;
   }
 
-  .fir, .sec {
+  .logoap {
+    height: 40px;
+    width: 40px;
+  }
+
+  .headerContent {
+    padding-left: 80px;
+    margin-left: 10px;
+  }
+
+  .fir,
+  .sec {
     font-size: 1rem;
     padding-right: 80px;
+  }
+
+  .allLinks {
+    row-gap: 10px;
+  }
+
+  .customerSupport {
+    margin-right: 20px;
   }
 }

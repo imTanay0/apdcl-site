@@ -46,3 +46,18 @@
 .btn:hover {
   background-color: #003f6f;
 }
+
+@media screen and (max-width: 768px) {
+  .inputFormContainer {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .inputFormContainer input {
+    width: 91.5%;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
