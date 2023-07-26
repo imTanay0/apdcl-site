@@ -173,7 +173,7 @@ export const GetSubDivisionNamesByDivision = async (req, res) => {
 // Get Sub-Division Details
 export const GetSubDivision = async (req, res) => {
   try {
-    const { subDivisionName, year, month } = req.body;
+    const { subDivisionName, year, month } = req.query;
 
     const subDivision = await SubDivision.findOne({
       name: subDivisionName,
