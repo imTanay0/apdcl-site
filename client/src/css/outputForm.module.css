@@ -1,0 +1,41 @@
+h2 {
+  margin-top: 50px;
+}
+
+.container {
+  width: 40%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-top: 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.container p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.container label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.container input {
+  width: 95.5%;
+  margin-bottom: 1rem;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.container input:focus {
+  outline: none;
+  border-color: #6b7ae8;
+}

@@ -1,13 +1,11 @@
 .inputFormContainer {
+  width: 40%;
   display: flex;
   flex-direction: column;
-  width: 500px;
   padding: 20px;
-  margin-top: 50px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* row-gap: 5px; */
-  background-color: #ffffff
+  background-color: #ffffff;
 }
 
 .inputFormContainer label {

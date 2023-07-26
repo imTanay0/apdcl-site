@@ -2,7 +2,7 @@ import { useState } from "react";
 import InputForm from "../components/InputForm"
 import OutputForm from "../components/OutputForm"
 
-import styles from "../css/Dashboard.module.css";
+import styles from "../css/Report.module.css";
 
 const Report = () => {
   const [subDivisionDetails, setSubDivisionDetails] = useState({});
@@ -15,7 +15,7 @@ const Report = () => {
     <>
       <main className={styles.mainContainer}>
         <InputForm onDataUpdate={getSDDetails}/>
-        <OutputForm />
+        <OutputForm data={subDivisionDetails}/>
       </main>
     </>
   )
