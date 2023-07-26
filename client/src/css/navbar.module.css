@@ -146,6 +146,7 @@
   .btnContainer {
     padding-right: 0;
     margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   .btn {
@@ -188,5 +189,16 @@
     font-size: 0.8rem;
     padding: 10px;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .headerContent {
+    padding-left: 80px;
+  }
+
+  .fir, .sec {
+    font-size: 1rem;
+    padding-right: 80px;
   }
 }
