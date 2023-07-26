@@ -18,13 +18,14 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-app.use(
-  cors({
-    origin: [process.env.FRONTEND_URI],
-    methods: ['GET', 'POST', 'PUT'],
-    credentials: true,
-  })
-)
+app.use(cors())
+// app.use(
+//   cors({
+//     origin: [process.env.FRONTEND_URI],
+//     methods: ['GET', 'POST', 'PUT'],
+//     credentials: true,
+//   })
+// )
 
 // routes
 app.use('/api/v1/user', userRoutes)
@@ -35,7 +36,7 @@ app.use('/api/v1/subdivision', subDivisionRoutes)
 // connect to database
 connectDB()
 
-app.get('/', (req, res) => res.send(`Hello Users, Check your app on ${process.env.FRONTEND_URI}!`))
+app.get('/', (req, res) => res.send(`Hello Users`))
 app.listen(process.env.PORT, () =>
   console.log(`App listening on port http://localhost:${process.env.PORT}`)
 )
