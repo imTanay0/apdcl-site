@@ -90,7 +90,11 @@ const InputForm = ({ onDataUpdate }) => {
       const data = response.data.subDivision;
 
       onDataUpdate(data);
-      // setSubDivisionDetails(data);
+
+      window.scrollTo({
+        top: window.scrollY + 650,
+        behavior: 'smooth',
+      })
     } catch (error) {
       console.log(error.message);
     } finally {
