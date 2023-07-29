@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import Report from './pages/Report'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import AddReport from './pages/AddReport'
+import YearlyData from './pages/YearlyData';
 
 import Navbar from './components/Navbar';
 
@@ -17,6 +19,8 @@ function App() {
           <Route path="/report" element={<Report />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/addreport' element={<AddReport />} />
+          <Route path='/yearlydata' element={<YearlyData />} />
         </Routes>
       </BrowserRouter>
     </>

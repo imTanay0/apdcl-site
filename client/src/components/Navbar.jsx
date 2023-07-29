@@ -66,6 +66,12 @@ const Navbar = () => {
           <Link to='/report'>
             <p className={styles.pageLink}>Report</p>
           </Link>
+          <Link to='/addreport'>
+            <p className={styles.pageLink}>Add Report</p>
+          </Link>
+          <Link to='/yearlydata'>
+            <p className={styles.pageLink}>Yearly Data</p>
+          </Link>
         </div>
       </div>
 

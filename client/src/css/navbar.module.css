@@ -81,7 +81,7 @@
 
 .linkContainer {
   display: flex;
-  justify-content: center;
+  padding-left: 13px;
   column-gap: 30px;
 }
 
