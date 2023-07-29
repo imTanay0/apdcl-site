@@ -75,7 +75,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className={styles.btnContainer}>
+      {/* <div className={styles.btnContainer}>
         <Link to="/register">
           <button className={styles.btn}>Sign up</button>
         </Link>
@@ -83,7 +83,7 @@ const Navbar = () => {
         <Link to="/login">
           <button className={styles.btn}>Sign in</button>
         </Link>
-      </div>
+      </div> */}
     </nav>
   )
 }
