@@ -90,21 +90,19 @@ const InputForm = ({ onDataUpdate }) => {
       const data = response.data.subDivision;
 
       onDataUpdate(data);
-
-      window.scrollTo({
-        top: window.scrollY + 650,
-        behavior: 'smooth',
-      })
+      setTimeout(() => {
+        window.scrollBy(0, 700);
+      }, 200)
     } catch (error) {
       console.log(error.message);
     } finally {
-      setAllDivisionNames([]);
-      setAllSubDivisionNames([]);
-      setCircleName('');
-      setDivisionName('');
-      setSubDivisionName('');
-      setYear('');
-      setMonth('');
+      // setAllDivisionNames([]);
+      // setAllSubDivisionNames([]);
+      // setCircleName('');
+      // setDivisionName('');
+      // setSubDivisionName('');
+      // setYear('');
+      // setMonth('');
     }
   }
 

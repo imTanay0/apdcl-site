@@ -1,3 +1,7 @@
+* {
+  scroll-behavior: smooth;
+}
+
 .inputFormContainer {
   width: 40%;
   display: flex;
