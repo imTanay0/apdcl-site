@@ -17,7 +17,9 @@ const Dashboard = () => {
     SD2: '',
     year: '',
     param: ''
-  })
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     const getAllSubDivisionNames = async () => {
@@ -51,6 +53,10 @@ const Dashboard = () => {
       year: year,
       param: param
     });
+
+    setTimeout(() => {
+      setIsSubmitted(true);
+    }, 200);
   }
 
   return (
@@ -111,7 +117,7 @@ const Dashboard = () => {
           <datalist id='paramOptions'>
             <option value="BE">Billing Efficiency</option>
             <option value="ABR">Average Billing Rate</option>
-            <option value="AT&C">AT&C Losses</option>
+            <option value="AT_CLosses">AT&C Losses</option>
             <option value="ARR">Average Revenue Realisation</option>
           </datalist>
 
@@ -120,9 +126,20 @@ const Dashboard = () => {
           </button>
         </form>
 
-        <main className={styles.diagramContainer}>
-          <BarDiagram inputData={data}/>
-        </main>
+        {
+          !isSubmitted
+            ? (
+              <main className={styles.diagramContainer}>
+                <p>Currently, comparisons are available for a few selected Sub-Divisions and the Financial Year 2020-21, with plans for expansion in the near future.</p>
+              </main>
+            )
+            : (
+              <main className={styles.diagramContainer}>
+                <BarDiagram inputData={data} />
+              </main>
+            )
+        }
+
 
       </div>
     </section>

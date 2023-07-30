@@ -82,10 +82,17 @@
 
 .diagramContainer {
   width: 60%;
-  margin: auto;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
+}
+
+.diagramContainer p {
+  padding: 50px 30px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #6b6b6b;
 }
 
 @media screen and (max-width: 768px) {

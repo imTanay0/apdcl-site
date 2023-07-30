@@ -31,6 +31,7 @@ const BarDiagram = ({ inputData }) => {
 
       try {
         const res = await axios.get(
+          // eslint-disable-next-line react/prop-types
           `https://apdcl-site-server.onrender.com/api/v1/yearlyPerformance/getdetail?subDivisionName=${inputData.SD1}&year=${inputData.year}`,
           {
             headers: {
@@ -44,7 +45,7 @@ const BarDiagram = ({ inputData }) => {
         setSD1Details(data);
       } catch (error) {
         console.log(error.message);
-        alert('Error. Check the form details again')
+        // alert('Error. Check the form details again')
       }
     }
 
@@ -52,6 +53,7 @@ const BarDiagram = ({ inputData }) => {
 
       try {
         const res = await axios.get(
+          // eslint-disable-next-line react/prop-types
           `https://apdcl-site-server.onrender.com/api/v1/yearlyPerformance/getdetail?subDivisionName=${inputData.SD2}&year=${inputData.year}`,
           {
             headers: {
@@ -65,7 +67,7 @@ const BarDiagram = ({ inputData }) => {
         setSD2Details(data);
       } catch (error) {
         console.log(error.message);
-        alert('Error. Check the form details again')
+        // alert('Error. Check the form details again')
       }
     }
 
@@ -74,19 +76,29 @@ const BarDiagram = ({ inputData }) => {
 
   }, [inputData])
 
+  // eslint-disable-next-line react/prop-types
+  const label1 = inputData.SD1;
+  // eslint-disable-next-line react/prop-types
+  const param1 = SD1Details[inputData.param];
+  // eslint-disable-next-line react/prop-types
+  const label2 = inputData.SD2
+  // eslint-disable-next-line react/prop-types
+  const param2 = SD2Details[inputData.param];
+
   const data = {
     labels: ['Sub-Division'],
     datasets: [
       {
-        label: 'Hojai',
-        data: [3],
+        label: label1,
+        data: [param1],
         backgroundColor: 'aqua',
         borderColor: 'black',
         borderWidth: 1,
       },
       {
-        label: 'Lanka',
-        data: [12],
+
+        label: label2,
+        data: [param2],
         backgroundColor: 'pink',
         borderColor: 'black',
         borderWidth: 1,
