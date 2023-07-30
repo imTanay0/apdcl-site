@@ -19,7 +19,11 @@ export const insertSubDivision = async (req, res) => {
 
     const { month, year } = date;
 
-    let subDivision = await SubDivision.findOne({ name });
+    let subDivision = await SubDivision.findOne({
+      name,
+      "date.month": month,
+      "date.year": year,
+    });
 
     if (subDivision) {
       return res.status(409).json({
