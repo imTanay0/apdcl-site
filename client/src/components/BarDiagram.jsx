@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import {
   Chart as ChartJS,
   BarElement,
@@ -18,7 +20,59 @@ ChartJS.register(
   Legend
 )
 
-const BarDiagram = () => {
+// eslint-disable-next-line react/prop-types
+const BarDiagram = ({ inputData }) => {
+  const [SD1Details, setSD1Details] = useState({});
+  const [SD2Details, setSD2Details] = useState({});
+
+  useEffect(() => {
+
+    const getYearlyPerformanceDetail1 = async () => {
+
+      try {
+        const res = await axios.get(
+          `https://apdcl-site-server.onrender.com/api/v1/yearlyPerformance/getdetail?subDivisionName=${inputData.SD1}&year=${inputData.year}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
+        )
+
+        const data = res.data.yearlyPerformance;
+
+        setSD1Details(data);
+      } catch (error) {
+        console.log(error.message);
+        alert('Error. Check the form details again')
+      }
+    }
+
+    const getYearlyPerformanceDetail2 = async () => {
+
+      try {
+        const res = await axios.get(
+          `https://apdcl-site-server.onrender.com/api/v1/yearlyPerformance/getdetail?subDivisionName=${inputData.SD2}&year=${inputData.year}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
+        )
+
+        const data = res.data.yearlyPerformance;
+
+        setSD2Details(data);
+      } catch (error) {
+        console.log(error.message);
+        alert('Error. Check the form details again')
+      }
+    }
+
+    getYearlyPerformanceDetail1();
+    getYearlyPerformanceDetail2();
+
+  }, [inputData])
 
   const data = {
     labels: ['Sub-Division'],
@@ -39,7 +93,7 @@ const BarDiagram = () => {
       }
     ]
   }
-  
+
   const options = {}
 
   return (

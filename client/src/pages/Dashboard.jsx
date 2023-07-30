@@ -12,6 +12,13 @@ const Dashboard = () => {
   const [year, setYear] = useState('');
   const [param, setParam] = useState('');
 
+  const [data, setData] = useState({
+    SD1: '',
+    SD2: '',
+    year: '',
+    param: ''
+  })
+
   useEffect(() => {
     const getAllSubDivisionNames = async () => {
       try {
@@ -35,11 +42,22 @@ const Dashboard = () => {
     getAllSubDivisionNames();
   }, [])
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setData({
+      SD1: SD1,
+      SD2: SD2,
+      year: year,
+      param: param
+    });
+  }
+
   return (
     <section className={styles.dashboardSection}>
       <h1 className={styles.headingText}>Comparison between yearly parameters of various sub-division</h1>
       <div className={styles.mainContainer}>
-        <form className={styles.container}>
+        <form className={styles.container} onSubmit={handleSubmit}>
           <label>Select any two sub-divisions</label>
           <div className={styles.horizontalInputs}>
             <input
@@ -103,7 +121,7 @@ const Dashboard = () => {
         </form>
 
         <main className={styles.diagramContainer}>
-          <BarDiagram />
+          <BarDiagram inputData={data}/>
         </main>
 
       </div>

@@ -97,3 +97,32 @@ export const getPerformance = async (req, res) => {
     });
   }
 };
+
+// Get Performance Details
+export const getPerformanceDetails = async (req, res) => {
+  try {
+    const { subDivisionName, year } = req.query;
+
+    const yearlyPerformance = await YearlyPerformance.findOne({
+      "subDivision.name": subDivisionName,
+      year: year,
+    });
+
+    if (!yearlyPerformance) {
+      return res.status(404).json({
+        success: false,
+        message: "No Yearly Performance Data Found.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      yearlyPerformance,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
