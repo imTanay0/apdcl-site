@@ -25,7 +25,8 @@ const Dashboard = () => {
         )
 
         const data = response.data.subDivisionNames;
-        setAllSubDivisionNames(data);
+        const uniqueData = [...new Set(data)];
+        setAllSubDivisionNames(uniqueData);
       } catch (error) {
         console.log(error.message);
       }

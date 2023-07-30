@@ -6,7 +6,7 @@ import styles from "../css/inputForm.module.css";
 // eslint-disable-next-line react/prop-types
 const InputForm = ({ onDataUpdate }) => {
   const [allCircleNames, setAllCircleNames] = useState([]);
-  const [allDivisionNames, setAllDivisionNames] = useState([]);
+  // const [allDivisionNames, setAllDivisionNames] = useState([]);
   const [allSubDivisionNames, setAllSubDivisionNames] = useState([]);
 
   const [circleName, setCircleName] = useState('');
@@ -34,22 +34,22 @@ const InputForm = ({ onDataUpdate }) => {
       }
     }
 
-    const getAllDivisionNames = async () => {
-      try {
-        const response = await axios.get(`https://apdcl-site-server.onrender.com/api/v1/division/getallnames?circleName=${circleName}`,
-          {
-            headers: {
-              'Content-Type': 'applicationn/json',
-            }
-          }
-        )
-        const data = response.data.divisionNames;
+    // const getAllDivisionNames = async () => {
+    //   try {
+    //     const response = await axios.get(`https://apdcl-site-server.onrender.com/api/v1/division/getallnames?circleName=${circleName}`,
+    //       {
+    //         headers: {
+    //           'Content-Type': 'applicationn/json',
+    //         }
+    //       }
+    //     )
+    //     const data = response.data.divisionNames;
 
-        setAllDivisionNames(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
+    //     setAllDivisionNames(data);
+    //   } catch (error) {
+    //     console.log(error.message);
+    //   }
+    // }
 
     const getAllSubDivisionNames = async () => {
       try {
@@ -62,15 +62,16 @@ const InputForm = ({ onDataUpdate }) => {
         )
 
         const data = response.data.subDivisionNames;
+        const uniqueData = [...new Set(data)];
 
-        setAllSubDivisionNames(data);
+        setAllSubDivisionNames(uniqueData);
       } catch (error) {
         console.log(error.message);
       }
     }
 
     getAllCircleNames();
-    getAllDivisionNames();
+    // getAllDivisionNames();
     getAllSubDivisionNames();
   }, [circleName, divisionName])
 
@@ -95,6 +96,7 @@ const InputForm = ({ onDataUpdate }) => {
       }, 200)
     } catch (error) {
       console.log(error.message);
+      alert("Error. Please check submit the form the valid input.")
     } finally {
       // setAllDivisionNames([]);
       // setAllSubDivisionNames([]);
@@ -131,9 +133,9 @@ const InputForm = ({ onDataUpdate }) => {
         onChange={(e) => setDivisionName(e.target.value)}
       />
       <datalist id="divisionOptions">
-        {allDivisionNames.map((divisionName, idx) => (
-          <option value={divisionName} key={idx}>{divisionName}</option>
-        ))}
+        <option value="Nagaon Division-I">Nagaon Division-I</option>
+        <option value="Nagaon Division-II">Nagaon Division-II</option>
+        <option value="HED">HED</option>
       </datalist>
 
       <label>Sub Division</label>
@@ -145,9 +147,11 @@ const InputForm = ({ onDataUpdate }) => {
         onChange={(e) => setSubDivisionName(e.target.value)}
       />
       <datalist id="subDivisionOptions">
-        {allSubDivisionNames.map((subDivisionName, idx) => (
-          <option value={subDivisionName} key={idx}>{subDivisionName}</option>
-        ))}
+        {
+          allSubDivisionNames.map((subDivisionName, idx) => (
+            <option value={subDivisionName} key={idx}>{subDivisionName}</option>
+          ))
+        }
       </datalist>
 
       <label>Year</label>
