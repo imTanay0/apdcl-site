@@ -32,6 +32,7 @@ export const addPerformance = async (req, res) => {
 
     const existingPerformance = await YearlyPerformance.findOne({
       "subDivision.name": subDivisionName,
+      year: year,
     });
 
     if (existingPerformance) {
