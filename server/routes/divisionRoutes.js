@@ -5,7 +5,7 @@ import {
   GetAllDivisions,
   GetDivisionsByCircle,
   GetDivisionNamesByCircle
-} from '../controller/divisionController.js'
+} from '../controllers/divisionController.js'
 
 const router = express.Router()
 

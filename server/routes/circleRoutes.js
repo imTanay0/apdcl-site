@@ -1,5 +1,5 @@
 import express from 'express'
-import { addCircle, getAllCircleNames } from '../controller/circleController.js'
+import { addCircle, getAllCircleNames } from '../controllers/circleController.js'
 
 const router = express.Router()
 

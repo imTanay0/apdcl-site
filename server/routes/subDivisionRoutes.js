@@ -6,7 +6,7 @@ import {
   GetSubDivisionNamesByDivision,
   GetSubDivision,
   GetAllSubDivisionNames
-} from "../controller/subDivisionController.js";
+} from "../controllers/subDivisionController.js";
 
 const router = express.Router();
 

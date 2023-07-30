@@ -8,6 +8,7 @@ import userRoutes from './routes/userRoutes.js'
 import circleRoutes from './routes/circleRoutes.js'
 import divisionRoutes from './routes/divisionRoutes.js'
 import subDivisionRoutes from './routes/subDivisionRoutes.js'
+import yearlyPerformanceRoutes from './routes/yearlyPerformanceRoutes.js'
 
 // Config
 dotenv.config({ path: 'database/.env' })
@@ -32,6 +33,7 @@ app.use('/api/v1/user', userRoutes)
 app.use('/api/v1/circle', circleRoutes)
 app.use('/api/v1/division', divisionRoutes)
 app.use('/api/v1/subdivision', subDivisionRoutes)
+app.use('/api/v1/yearlyPerformance', yearlyPerformanceRoutes)
 
 // connect to database
 connectDB()
