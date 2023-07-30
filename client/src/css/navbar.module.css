@@ -81,7 +81,7 @@
 
 .linkContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   column-gap: 30px;
 }
 

@@ -66,12 +66,20 @@ const Navbar = () => {
           <Link to='/report'>
             <p className={styles.pageLink}>Report</p>
           </Link>
-          <Link to='/addreport'>
+          <Link to='/dashboard'>
+            <p className={styles.pageLink}>Dashboard</p>
+          </Link>
+
+          {/* <Link to='/performance'>
+            <p className={styles.pageLink}>Performance</p>
+          </Link> */}
+          
+          {/* <Link to='/addreport'>
             <p className={styles.pageLink}>Add Report</p>
           </Link>
           <Link to='/yearlydata'>
             <p className={styles.pageLink}>Yearly Data</p>
-          </Link>
+          </Link> */}
         </div>
       </div>
 

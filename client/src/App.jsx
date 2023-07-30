@@ -6,6 +6,8 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import AddReport from './pages/AddReport'
 import YearlyData from './pages/YearlyData';
+import Performance from './pages/Performance'
+import Dashboard from './pages/Dashboard'
 
 import Navbar from './components/Navbar';
 
@@ -19,8 +21,10 @@ function App() {
           <Route path="/report" element={<Report />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/performance' element={<Performance />} />
           <Route path='/addreport' element={<AddReport />} />
           <Route path='/yearlydata' element={<YearlyData />} />
+          <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>
