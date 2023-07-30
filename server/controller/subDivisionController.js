@@ -92,6 +92,34 @@ export const GetAllSubDivisions = async (req, res) => {
   }
 };
 
+// Get all sub-division's Name
+export const GetAllSubDivisionNames = async (req, res) => {
+  try {
+    const subDivisions = await SubDivision.find();
+
+    if (!subDivisions || subDivisions.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "No subdivisions found.",
+      });
+    }
+
+    const subDivisionNames = subDivisions.map(
+      (subDivision) => subDivision.name
+    )
+
+    res.status(201).json({
+      success: true,
+      subDivisionNames,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 // Get sub-divisions under a division
 export const GetSubDivisionsByDivision = async (req, res) => {
   try {
