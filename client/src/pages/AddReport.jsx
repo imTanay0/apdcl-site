@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import { calcBillingEfficiency, calcAT_CLossesIRCA, calcAvgBillingRate, calcARR } from '../utils/outputParameters';
+
 import styles from '../css/AddReport.module.css';
 
 const AddReport = () => {
@@ -19,7 +21,14 @@ const AddReport = () => {
   const [divisionName, setDivisionName] = useState('');
 
   const [allSubDivisionNames, setAllSubDivisionNames] = useState([]);
-  const [subDivisionDetail, setSubDivisionDetail] = useState({});
+  const [subDivisionDetail, setSubDivisionDetail] = useState();
+
+  const [outPutParams, setOutPutParams] = useState({
+    billingEff: 0,
+    AT_CLossesIRCA: 0,
+    avgBillingRate: 0,
+    ARR: 0
+  });
 
   useEffect(() => {
     const getAllSubDivisionNames = async () => {
@@ -75,6 +84,13 @@ const AddReport = () => {
       if (result.success) {
         alert('Sub-Division Added Successfully.');
         setSubDivisionDetail(result.subDivision);
+        setOutPutParams({
+          billingEff: calcBillingEfficiency(subDivisionDetail.unitBilled, subDivisionDetail.MUinjection),
+          AT_CLossesIRCA: calcAT_CLossesIRCA(subDivisionDetail.totalCollectionIRCA, subDivisionDetail.currentDemandIRCA, outPutParams.billingEff),
+          avgBillingRate: calcAvgBillingRate(subDivisionDetail.currentDemandIRCA, subDivisionDetail.unitBilled),
+          ARR: calcARR(subDivisionDetail.totalCollectionIRCA, subDivisionDetail.MUinjection),
+        })
+
       } else {
         alert(`Failed to Submit the Form: ${result.message}`)
       }
@@ -86,7 +102,7 @@ const AddReport = () => {
   return (
     <section className={styles.addReportSection}>
       <h1 className={styles.headingText}>Add Details of a Sub-Division to the Database</h1>
-      <form className={styles.container} onSubmit={handleFormSubmit}>
+      <form className={styles.formContainer} onSubmit={handleFormSubmit}>
         <label htmlFor="circle">Circle</label>
         <input
           list="circleOptions"
@@ -219,9 +235,29 @@ const AddReport = () => {
         </button>
       </form>
 
-      {/* <div className={styles.reportDiv}>
-        gfjkh gfjh sdgfkjhg
-      </div> */}
+      <div className={styles.formContainer}>
+        {
+          !subDivisionDetail
+            ? (
+              <p>Fill up and submit the above form with correct data to generate the report</p>
+            )
+            : (
+              <div>
+                <label>Billing Efficiency</label>
+                <input type="text" defaultValue={parseInt(outPutParams.billingEff * 100) + '%'} />
+
+                <label>AT&C Losses including IRCA</label>
+                <input type="text" defaultValue={parseInt(outPutParams.AT_CLossesIRCA * 100) + '%'} />
+
+                <label>Average Billing Rate</label>
+                <input type="text" defaultValue={outPutParams.avgBillingRate} />
+
+                <label>Average Revenue Realisation</label>
+                <input type="text" defaultValue={outPutParams.ARR} />
+              </div>
+            )
+        }
+      </div>
     </section>
   )
 }
