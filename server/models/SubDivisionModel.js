@@ -46,7 +46,7 @@ const subDivisionSchema = new mongoose.Schema({
     },
     year: {
       type: Number,
-      min: 2019,
+      min: 2018,
       max: 2021,
     },
   },
