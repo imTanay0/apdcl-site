@@ -91,6 +91,9 @@ const AddReport = () => {
           ARR: calcARR(subDivisionDetail.totalCollectionIRCA, subDivisionDetail.MUinjection),
         })
 
+        setTimeout(() => {
+          window.scrollBy(0, 650);
+        }, 150);
       } else {
         alert(`Failed to Submit the Form: ${result.message}`)
       }
@@ -181,7 +184,7 @@ const AddReport = () => {
           type="number"
           value={MUinjection === 0 ? '' : MUinjection}
           onChange={(e) => setMUinjection(e.target.value)}
-        // required
+          required
         />
 
         <label htmlFor="unitBilled">Unit Billed</label>
@@ -190,17 +193,17 @@ const AddReport = () => {
           type="number"
           value={unitBilled === 0 ? '' : unitBilled}
           onChange={(e) => setUnitBilled(e.target.value)}
-        // required
+          required
         />
 
         <label htmlFor="noOfConsumers">Number of Consumers</label>
         <input type="number" id="noOfConsumers" value={noOfConsumers === 0 ? '' : noOfConsumers} onChange={(e) => setNoOfConsumers(e.target.value)}
-        // required 
+          required
         />
 
         <label htmlFor="noOfBillsServed">Number of Bills Served</label>
         <input id='noOfBillsServed' type="number" value={noOfBillsServed === 0 ? '' : noOfBillsServed} onChange={(e) => setNoOfBillsServed(e.target.value)}
-        // required
+          required
         />
 
         <label htmlFor="totalCollectionIRCA">Total Collection including IRCA</label>
@@ -209,7 +212,7 @@ const AddReport = () => {
           type='number'
           value={totalCollectionIRCA === 0 ? '' : totalCollectionIRCA}
           onChange={(e) => setTotalCollectionIRCA(e.target.value)}
-        // required
+          required
         />
 
         <label htmlFor="currentDemandIRCA">Current Demand including IRCA</label>
@@ -218,7 +221,7 @@ const AddReport = () => {
           type="number"
           value={currentDemandIRCA === 0 ? '' : currentDemandIRCA}
           onChange={(e) => setCurrentDemandIRCA(e.target.value)}
-        // required
+          required
         />
 
         <label htmlFor="totalArrear">Total Arrear</label>
@@ -227,7 +230,7 @@ const AddReport = () => {
           type='number'
           value={totalArrear === 0 ? '' : totalArrear}
           onChange={(e) => setTotalArrear(e.target.value)}
-        // required
+          required
         />
 
         <button className={styles.btn} type='submit'>

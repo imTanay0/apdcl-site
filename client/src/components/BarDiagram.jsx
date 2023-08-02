@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
@@ -6,10 +7,11 @@ import {
   CategoryScale,
   LinearScale,
   Tooltip,
-  Legend
+  Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
+import sortByMonthAndYear from '../utils/sortMonthlyYearly';
 import styles from '../css/barDiagram.module.css';
 
 ChartJS.register(
@@ -17,22 +19,19 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   Tooltip,
-  Legend
+  Legend,
 )
 
-// eslint-disable-next-line react/prop-types
 const BarDiagram = ({ inputData }) => {
-  const [SD1Details, setSD1Details] = useState({});
-  const [SD2Details, setSD2Details] = useState({});
+  const [subDivisionYearlyDetails, setsubDivisionYearlyDetails] = useState([]);
 
   useEffect(() => {
 
-    const getYearlyPerformanceDetail1 = async () => {
+    const getYearlyPerformanceDetail = async () => {
 
       try {
         const res = await axios.get(
-          // eslint-disable-next-line react/prop-types
-          `https://apdcl-site-server.onrender.com/api/v1/yearlyPerformance/getdetail?subDivisionName=${inputData.SD1}&year=${inputData.year}`,
+          `https://apdcl-site-server.onrender.com/api/v1/subdivision/yearlydetails?subDivisionName=${inputData.subDivisionName}&financialYear=${inputData.financialYear}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -40,79 +39,54 @@ const BarDiagram = ({ inputData }) => {
           }
         )
 
-        const data = res.data.yearlyPerformance;
+        const data = res.data.updatedSubDivisions;
+        const sortedData = data.sort(sortByMonthAndYear);
 
-        setSD1Details(data);
+        setsubDivisionYearlyDetails(sortedData);
+
+        setTimeout(() => {
+          window.scrollBy(0, 700);
+        }, 200)
       } catch (error) {
         console.log(error.message);
-        // alert('Error. Check the form details again')
       }
     }
 
-    const getYearlyPerformanceDetail2 = async () => {
-
-      try {
-        const res = await axios.get(
-          // eslint-disable-next-line react/prop-types
-          `https://apdcl-site-server.onrender.com/api/v1/yearlyPerformance/getdetail?subDivisionName=${inputData.SD2}&year=${inputData.year}`,
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            }
-          }
-        )
-
-        const data = res.data.yearlyPerformance;
-
-        setSD2Details(data);
-      } catch (error) {
-        console.log(error.message);
-        // alert('Error. Check the form details again')
-      }
-    }
-
-    getYearlyPerformanceDetail1();
-    getYearlyPerformanceDetail2();
+    getYearlyPerformanceDetail();
 
   }, [inputData])
 
-  // eslint-disable-next-line react/prop-types
-  const label1 = inputData.SD1;
-  // eslint-disable-next-line react/prop-types
-  const param1 = SD1Details[inputData.param];
-  // eslint-disable-next-line react/prop-types
-  const label2 = inputData.SD2
-  // eslint-disable-next-line react/prop-types
-  const param2 = SD2Details[inputData.param];
 
-  const data = {
-    labels: ['Sub-Division'],
+  const months = subDivisionYearlyDetails.map(entry => `${entry.date.month}, ${entry.date.year}`);
+  const arrValues = subDivisionYearlyDetails.map(entry => entry[inputData.param]);
+
+  const chartData = {
+    labels: months,
     datasets: [
       {
-        label: label1,
-        data: [param1],
+        label: inputData.param,
+        data: arrValues,
         backgroundColor: 'aqua',
         borderColor: 'black',
         borderWidth: 1,
       },
-      {
-
-        label: label2,
-        data: [param2],
-        backgroundColor: 'pink',
-        borderColor: 'black',
-        borderWidth: 1,
-      }
-    ]
-  }
-
-  const options = {}
+    ],
+  };
 
   return (
     <div className={styles.diagramContainer}>
       <Bar
-        data={data}
-        options={options}
+        data={chartData}
+        options={{
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMax: Math.max(...arrValues) + 1,
+            },
+          },
+        }}
       />
     </div>
   )

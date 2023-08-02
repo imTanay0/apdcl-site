@@ -7,15 +7,13 @@ import styles from '../css/Dashboard.module.css';
 const Dashboard = () => {
   const [allSubDivisionNames, setAllSubDivisionNames] = useState([]);
 
-  const [SD1, setSD1] = useState('');
-  const [SD2, setSD2] = useState('');
-  const [year, setYear] = useState('');
+  const [subDivisionName, setSubDivisionName] = useState('');
+  const [financialYear, setFinancialYear] = useState('');
   const [param, setParam] = useState('');
 
   const [data, setData] = useState({
-    SD1: '',
-    SD2: '',
-    year: '',
+    subDivisionName: '',
+    financialYear: '',
     param: ''
   });
 
@@ -48,9 +46,8 @@ const Dashboard = () => {
     e.preventDefault();
 
     setData({
-      SD1: SD1,
-      SD2: SD2,
-      year: year,
+      subDivisionName,
+      financialYear,
       param: param
     });
 
@@ -61,60 +58,48 @@ const Dashboard = () => {
 
   return (
     <section className={styles.dashboardSection}>
-      <h1 className={styles.headingText}>Comparison between yearly parameters of various sub-division</h1>
+      <h1 className={styles.headingText}>Comparison between parameters of a sub-division in a financial year</h1>
       <div className={styles.mainContainer}>
         <form className={styles.container} onSubmit={handleSubmit}>
-          <label>Select any two sub-divisions</label>
-          <div className={styles.horizontalInputs}>
-            <input
-              list='subDivisionOptions1'
-              type="text"
-              value={SD1}
-              onChange={(e) => setSD1(e.target.value)}
-            />
-            <datalist id="subDivisionOptions1">
-              {
-                allSubDivisionNames.map((subDivisionName, idx) => (
-                  <option key={idx} value={subDivisionName}>{subDivisionName}</option>
-                ))
-              }
-            </datalist>
-
-            <input
-              list='subDivisionOptions2'
-              type="text"
-              value={SD2}
-              onChange={(e) => setSD2(e.target.value)}
-            />
-            <datalist id="subDivisionOptions2">
-              {
-                allSubDivisionNames.map((subDivisionName, idx) => (
-                  <option key={idx} value={subDivisionName}>{subDivisionName}</option>
-                ))
-              }
-            </datalist>
-          </div>
-          <label>Year</label>
+          <label>Sub-Divisions</label>
           <input
-            list="yearOptions"
+            list='subDivisionOptions1'
+            type="text"
+            placeholder='Enter a Sub-Division'
+            value={subDivisionName}
+            onChange={(e) => setSubDivisionName(e.target.value)}
             required
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
           />
-          <datalist id="yearOptions">
-            <option value="2018-19">2018-19</option>
-            <option value="2019-20">2019-20</option>
-            <option value="2020-21">2020-21</option>
+          <datalist id="subDivisionOptions1">
+            {
+              allSubDivisionNames.map((subDivisionName, idx) => (
+                <option key={idx} value={subDivisionName}>{subDivisionName}</option>
+              ))
+            }
           </datalist>
 
-          <label>Select any of the 4 reporting parameters</label>
+          <label>Financial year</label>
+          <input
+            placeholder='eg, 2019-20'
+            value={financialYear}
+            onChange={(e) => setFinancialYear(e.target.value)}
+            required
+          />
+
+          <label>Select any of the 9 reporting parameters</label>
           <input
             list='paramOptions'
             type='text'
             value={param}
             onChange={(e) => setParam(e.target.value)}
+            required
           />
           <datalist id='paramOptions'>
+            <option value="MUinjection">MU Injection</option>
+            <option value="unitBilled">Unit Billed</option>
+            <option value="totalCollectionIRCA">Total Collection including IRCA</option>
+            <option value="currentDemandIRCA">Current Demand including IRCA</option>
+            <option value="CE">Collection Efficiency</option>
             <option value="BE">Billing Efficiency</option>
             <option value="ABR">Average Billing Rate</option>
             <option value="AT_CLosses">AT&C Losses</option>
@@ -125,12 +110,11 @@ const Dashboard = () => {
             Submit
           </button>
         </form>
-
         {
           !isSubmitted
             ? (
               <main className={styles.diagramContainer}>
-                <p>Currently, comparisons are available for a few selected Sub-Divisions and the Financial Year 2020-21, with plans for expansion in the near future.</p>
+                <p>Fill up and submit the form with correct data</p>
               </main>
             )
             : (
@@ -139,8 +123,6 @@ const Dashboard = () => {
               </main>
             )
         }
-
-
       </div>
     </section>
   )

@@ -145,6 +145,9 @@ const YearlyData = () => {
             <label>Billing Efficiency</label>
             <input type="text" value={parseInt(subDivisionYearly.BE * 100) + '%'} readOnly />
 
+            <label>Collection Efficiency</label>
+            <input type="text" value={parseInt(subDivisionYearly.CE * 100) + '%'} readOnly />
+
             <label>AT&C Losses including IRCA</label>
             <input type="text" value={parseInt(subDivisionYearly.AT_CLosses * 100) + '%'} readOnly />
 
