@@ -300,8 +300,8 @@ export const GetYearlySubDivisionDetails = async (req, res) => {
         subDivision.MUinjection
       );
       let CE = calcCE(
-        subDivision.totalCollectionIRCA,
-        subDivision.currentDemandIRCA
+        subDivision.currentDemandIRCA,
+        subDivision.totalCollectionIRCA
       );
 
       BE = parseInt(BE * 100);
