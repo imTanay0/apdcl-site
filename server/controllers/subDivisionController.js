@@ -243,7 +243,7 @@ export const GetSubDivision = async (req, res) => {
 // Get yearly Sub-Divsion Details
 export const GetYearlySubDivisionDetails = async (req, res) => {
   try {
-    const { subDivisionName, financialYear } = req.body;
+    const { subDivisionName, financialYear } = req.query;
 
     const [startYear, endYear] = getYears(financialYear);
 
@@ -323,7 +323,7 @@ export const GetYearlySubDivisionDetails = async (req, res) => {
 // Get Sum of Sub-Division on Yearly basis
 export const GetSubDivisionSumYearly = async (req, res) => {
   try {
-    const { subDivisionName, financialYear } = req.body;
+    const { subDivisionName, financialYear } = req.query;
 
     const [startYear, endYear] = getYears(financialYear);
 
