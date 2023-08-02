@@ -6,7 +6,6 @@ import styles from "../css/inputForm.module.css";
 // eslint-disable-next-line react/prop-types
 const InputForm = ({ onDataUpdate }) => {
   const [allCircleNames, setAllCircleNames] = useState([]);
-  // const [allDivisionNames, setAllDivisionNames] = useState([]);
   const [allSubDivisionNames, setAllSubDivisionNames] = useState([]);
 
   const [circleName, setCircleName] = useState('');
@@ -33,23 +32,6 @@ const InputForm = ({ onDataUpdate }) => {
         console.log(error.message);
       }
     }
-
-    // const getAllDivisionNames = async () => {
-    //   try {
-    //     const response = await axios.get(`https://apdcl-site-server.onrender.com/api/v1/division/getallnames?circleName=${circleName}`,
-    //       {
-    //         headers: {
-    //           'Content-Type': 'applicationn/json',
-    //         }
-    //       }
-    //     )
-    //     const data = response.data.divisionNames;
-
-    //     setAllDivisionNames(data);
-    //   } catch (error) {
-    //     console.log(error.message);
-    //   }
-    // }
 
     const getAllSubDivisionNames = async () => {
       try {

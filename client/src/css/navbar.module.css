@@ -49,6 +49,7 @@
 
 .customerSupport {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   font-size: 14px;
   column-gap: 5px;

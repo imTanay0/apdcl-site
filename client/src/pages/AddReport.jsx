@@ -244,16 +244,16 @@ const AddReport = () => {
             : (
               <div>
                 <label>Billing Efficiency</label>
-                <input type="text" defaultValue={parseInt(outPutParams.billingEff * 100) + '%'} />
+                <input type="text" readOnly value={parseInt(outPutParams.billingEff * 100) + '%'} />
 
                 <label>AT&C Losses including IRCA</label>
-                <input type="text" defaultValue={parseInt(outPutParams.AT_CLossesIRCA * 100) + '%'} />
+                <input type="text" readOnly value={parseInt(outPutParams.AT_CLossesIRCA * 100) + '%'} />
 
                 <label>Average Billing Rate</label>
-                <input type="text" defaultValue={outPutParams.avgBillingRate} />
+                <input type="text" readOnly value={outPutParams.avgBillingRate} />
 
                 <label>Average Revenue Realisation</label>
-                <input type="text" defaultValue={outPutParams.ARR} />
+                <input type="text" readOnly value={outPutParams.ARR} />
               </div>
             )
         }

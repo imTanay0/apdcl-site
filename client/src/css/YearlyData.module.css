@@ -1,0 +1,90 @@
+* {
+  scroll-behavior: smooth;
+}
+
+.YearlyDataSection {
+  padding: 50px 50px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headingText {
+  max-width: 700px;
+  text-wrap: balance;
+  text-align: center;
+  line-height: 2.1rem;
+  margin-bottom: 10px;
+}
+
+.formContainer {
+  padding: 20px;
+  margin-top: 30px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.formContainer p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #6b6b6b;
+}
+
+.formContainer label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.formContainer input {
+  width: 95.5%;
+  margin-bottom: 1rem;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.formContainer input:focus {
+  outline: none;
+  border-color: #6b7ae8;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #01579b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #003f6f;
+}
+
+@media screen and (max-width: 768px) {
+  .formContainer {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .formContainer input {
+    width: 91.5%;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}

@@ -21,37 +21,37 @@ const OutputForm = ({ data }) => {
         ) : (
           <div>
             <label>MU injection</label>
-            <input type="text" value={subDivisionDetails.MUinjection} />
+            <input type="text" value={subDivisionDetails.MUinjection} readOnly />
 
             <label>Unit billed</label>
-            <input type="text" value={subDivisionDetails.unitBilled} />
+            <input type="text" value={subDivisionDetails.unitBilled} readOnly />
 
             <label>Number of consumers</label>
-            <input type="text" value={subDivisionDetails.noOfConsumers} />
+            <input type="text" value={subDivisionDetails.noOfConsumers} readOnly />
 
             <label>Current demand IRCA</label>
-            <input type="text" value={subDivisionDetails.currentDemandIRCA} />
+            <input type="text" value={subDivisionDetails.currentDemandIRCA} readOnly />
 
             <label>Total collection IRCA</label>
-            <input type="text" value={subDivisionDetails.totalCollectionIRCA} />
+            <input type="text" value={subDivisionDetails.totalCollectionIRCA} readOnly />
 
             <label>Number of bills served</label>
-            <input type="text" value={subDivisionDetails.noOfBillsServed} />
+            <input type="text" value={subDivisionDetails.noOfBillsServed} readOnly />
 
             <label>Total Arrear</label>
-            <input type="text" value={subDivisionDetails.totalArrear} />
+            <input type="text" value={subDivisionDetails.totalArrear} readOnly />
 
             <label>Billing efficiency</label>
-            <input type="text" value={parseInt(billingEff * 100) + '%'} />
+            <input type="text" value={parseInt(billingEff * 100) + '%'} readOnly />
 
             <label>AT & C losses including IRCA</label>
-            <input type="text" value={parseInt(AT_CLossesIRCA * 100) + '%'} />
+            <input type="text" value={parseInt(AT_CLossesIRCA * 100) + '%'} readOnly />
 
             <label>Average billing rate</label>
-            <input type="text" value={avgBillingRate} />
+            <input type="text" value={avgBillingRate} readOnly />
 
             <label>Average revenue realisation</label>
-            <input type="text" value={ARR} />
+            <input type="text" value={ARR} readOnly />
           </div>
         )}
       </div>
