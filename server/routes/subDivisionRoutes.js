@@ -5,7 +5,9 @@ import {
   GetSubDivisionsByDivision,
   GetSubDivisionNamesByDivision,
   GetSubDivision,
-  GetAllSubDivisionNames
+  GetAllSubDivisionNames,
+  GetYearlySubDivisionDetails,
+  GetSubDivisionSumYearly,
 } from "../controllers/subDivisionController.js";
 
 const router = express.Router();
@@ -21,5 +23,9 @@ router.get("/get", GetSubDivisionsByDivision);
 router.get("/getallnames", GetSubDivisionNamesByDivision);
 
 router.get("/getdetails", GetSubDivision);
+
+router.get("/yearlydetails", GetYearlySubDivisionDetails);
+
+router.get("/getyearlysum", GetSubDivisionSumYearly);
 
 export default router;

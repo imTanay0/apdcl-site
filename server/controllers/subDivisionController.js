@@ -1,5 +1,13 @@
+import { get } from "mongoose";
 import Division from "../models/DivisionModel.js";
 import SubDivision from "../models/SubDivisionModel.js";
+import getYears from "../utils/getYears.js";
+import {
+  calcBillingEfficiency,
+  calcAT_CLossesIRCA,
+  calcAvgBillingRate,
+  calcARR,
+} from "../utils/calcOutputParams.js";
 
 // Insert a new sub-division
 export const insertSubDivision = async (req, res) => {
@@ -110,7 +118,7 @@ export const GetAllSubDivisionNames = async (req, res) => {
 
     const subDivisionNames = subDivisions.map(
       (subDivision) => subDivision.name
-    )
+    );
 
     res.status(201).json({
       success: true,
@@ -202,7 +210,7 @@ export const GetSubDivisionNamesByDivision = async (req, res) => {
   }
 };
 
-// Get Sub-Division Details
+// Get a Sub-Division Details
 export const GetSubDivision = async (req, res) => {
   try {
     const { subDivisionName, year, month } = req.query;
@@ -223,6 +231,185 @@ export const GetSubDivision = async (req, res) => {
     res.status(200).json({
       success: true,
       subDivision,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// Get yearly Sub-Divsion Details
+export const GetYearlySubDivisionDetails = async (req, res) => {
+  try {
+    const { subDivisionName, financialYear } = req.body;
+
+    const [startYear, endYear] = getYears(financialYear);
+
+    const subDivisions = await SubDivision.find({
+      name: subDivisionName,
+      $or: [
+        {
+          "date.year": startYear,
+          "date.month": {
+            $in: [
+              "April",
+              "May",
+              "June",
+              "July",
+              "August",
+              "September",
+              "October",
+              "November",
+              "December",
+            ],
+          },
+        },
+        {
+          "date.year": endYear,
+          "date.month": { $in: ["January", "February", "March"] },
+        },
+      ],
+    });
+
+    if (!subDivisions || subDivisions.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No Sub-Division Found.",
+      });
+    }
+
+    const updatedSubDivisions = subDivisions.map((subDivision) => {
+      const BE = calcBillingEfficiency(
+        subDivision.unitBilled,
+        subDivision.MUinjection
+      );
+      const AT_CLosses = calcAT_CLossesIRCA(
+        subDivision.totalCollectionIRCA,
+        subDivision.currentDemandIRCA,
+        BE
+      );
+      const ABR = calcAvgBillingRate(
+        subDivision.currentDemandIRCA,
+        subDivision.unitBilled
+      );
+      const ARR = calcARR(
+        subDivision.totalCollectionIRCA,
+        subDivision.MUinjection
+      );
+
+      return {
+        ...subDivision.toObject(),
+        BE,
+        AT_CLosses,
+        ABR,
+        ARR,
+      };
+    });
+
+    res.status(200).json({
+      success: true,
+      updatedSubDivisions,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// Get Sum of Sub-Division on Yearly basis
+export const GetSubDivisionSumYearly = async (req, res) => {
+  try {
+    const { subDivisionName, financialYear } = req.body;
+
+    const [startYear, endYear] = getYears(financialYear);
+
+    const subDivisions = await SubDivision.find({
+      name: subDivisionName,
+      $or: [
+        {
+          "date.year": startYear,
+          "date.month": {
+            $in: [
+              "April",
+              "May",
+              "June",
+              "July",
+              "August",
+              "September",
+              "October",
+              "November",
+              "December",
+            ],
+          },
+        },
+        {
+          "date.year": endYear,
+          "date.month": { $in: ["January", "February", "March"] },
+        },
+      ],
+    });
+
+    if (!subDivisions || subDivisions.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No Sub-Division Found.",
+      });
+    }
+
+    const yearlySum = subDivisions.reduce((acc, subDivision) => {
+      // todo: Parse the values to 2 digits after decimal
+      acc["MUinjection"] =
+        (acc["MUinjection"] || 0) + subDivision["MUinjection"];
+      acc["unitBilled"] = (acc["unitBilled"] || 0) + subDivision["unitBilled"];
+      acc["noOfConsumers"] =
+        (acc["noOfConsumers"] || 0) + subDivision["noOfConsumers"];
+      acc["noOfBillsServed"] =
+        (acc["noOfBillsServed"] || 0) + subDivision["noOfBillsServed"];
+      acc["totalCollectionIRCA"] =
+        (acc["totalCollectionIRCA"] || 0) + subDivision["totalCollectionIRCA"];
+      acc["currentDemandIRCA"] =
+        (acc["currentDemandIRCA"] || 0) + subDivision["currentDemandIRCA"];
+
+      acc["totalArrear"] = subDivision["totalArrear"];
+
+      return acc;
+    }, {});
+
+    // Output Params
+    const BE = calcBillingEfficiency(
+      yearlySum.unitBilled,
+      yearlySum.MUinjection
+    );
+    const AT_CLosses = calcAT_CLossesIRCA(
+      yearlySum.totalCollectionIRCA,
+      yearlySum.currentDemandIRCA,
+      BE
+    );
+    const ABR = calcAvgBillingRate(
+      yearlySum.currentDemandIRCA,
+      yearlySum.unitBilled
+    );
+    const ARR = calcARR(yearlySum.totalCollectionIRCA, yearlySum.MUinjection);
+
+    const updatedYearlySum = {
+      ...yearlySum,
+      MUinjection: parseFloat(parseFloat(yearlySum.MUinjection).toFixed(2)),
+      unitBilled: parseFloat(parseFloat(yearlySum["unitBilled"]).toFixed(2)),
+      totalCollectionIRCA: parseInt(yearlySum.totalCollectionIRCA),
+      currentDemandIRCA: parseInt(yearlySum.currentDemandIRCA),
+      BE,
+      AT_CLosses,
+      ABR,
+      ARR,
+    };
+
+    res.status(200).json({
+      success: true,
+      updatedYearlySum,
     });
   } catch (error) {
     res.status(500).json({
