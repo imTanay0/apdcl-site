@@ -1,3 +1,7 @@
+export const calcCE = (currentDemand, totalCollection) => {
+  return totalCollection / currentDemand;
+};
+
 export const calcBillingEfficiency = (unitBilled, MUInjection) => {
   return unitBilled / MUInjection;
 };

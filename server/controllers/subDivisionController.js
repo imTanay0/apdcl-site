@@ -3,6 +3,7 @@ import Division from "../models/DivisionModel.js";
 import SubDivision from "../models/SubDivisionModel.js";
 import getYears from "../utils/getYears.js";
 import {
+  calcCE,
   calcBillingEfficiency,
   calcAT_CLossesIRCA,
   calcAvgBillingRate,
@@ -298,6 +299,10 @@ export const GetYearlySubDivisionDetails = async (req, res) => {
         subDivision.totalCollectionIRCA,
         subDivision.MUinjection
       );
+      const CE = calcCE(
+        subDivision.totalCollectionIRCA,
+        subDivision.currentDemandIRCA
+      );
 
       return {
         ...subDivision.toObject(),
@@ -305,6 +310,7 @@ export const GetYearlySubDivisionDetails = async (req, res) => {
         AT_CLosses,
         ABR,
         ARR,
+        CE,
       };
     });
 
@@ -394,6 +400,10 @@ export const GetSubDivisionSumYearly = async (req, res) => {
       yearlySum.unitBilled
     );
     const ARR = calcARR(yearlySum.totalCollectionIRCA, yearlySum.MUinjection);
+    const CE = calcCE(
+      yearlySum.totalCollectionIRCA,
+      yearlySum.currentDemandIRCA
+    );
 
     const updatedYearlySum = {
       ...yearlySum,
@@ -405,6 +415,7 @@ export const GetSubDivisionSumYearly = async (req, res) => {
       AT_CLosses,
       ABR,
       ARR,
+      CE,
     };
 
     res.status(200).json({
