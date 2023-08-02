@@ -282,27 +282,31 @@ export const GetYearlySubDivisionDetails = async (req, res) => {
     }
 
     const updatedSubDivisions = subDivisions.map((subDivision) => {
-      const BE = calcBillingEfficiency(
+      let BE = calcBillingEfficiency(
         subDivision.unitBilled,
         subDivision.MUinjection
       );
-      const AT_CLosses = calcAT_CLossesIRCA(
+      let AT_CLosses = calcAT_CLossesIRCA(
         subDivision.totalCollectionIRCA,
         subDivision.currentDemandIRCA,
         BE
       );
-      const ABR = calcAvgBillingRate(
+      let ABR = calcAvgBillingRate(
         subDivision.currentDemandIRCA,
         subDivision.unitBilled
       );
-      const ARR = calcARR(
+      let ARR = calcARR(
         subDivision.totalCollectionIRCA,
         subDivision.MUinjection
       );
-      const CE = calcCE(
+      let CE = calcCE(
         subDivision.totalCollectionIRCA,
         subDivision.currentDemandIRCA
       );
+
+      BE = parseInt(BE * 100);
+      AT_CLosses = parseInt(AT_CLosses * 100);
+      CE = parseInt(CE * 100);
 
       return {
         ...subDivision.toObject(),
