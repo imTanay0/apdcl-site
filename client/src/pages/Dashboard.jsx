@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { pdf } from '@react-pdf/renderer';
+// import { pdf } from '@react-pdf/renderer';
 
 
 import BarDiagram from '../components/BarDiagram';
-import PDFDocument from '../documents/PdfDocument';
+// import PDFDocument from '../documents/PdfDocument';
 
 // import sortByMonthAndYear from './../utils/sortMonthlyYearly';
 import styles from '../css/Dashboard.module.css';
@@ -217,7 +217,7 @@ const Dashboard = () => {
             )
             : (
               <main className={styles.diagramContainer}>
-                <BarDiagram subDivisionName={subDivisionName} financialYear={financialYear} param={data.param}/>
+                <BarDiagram subDivisionName={subDivisionName} financialYear={financialYear} param={data.param} />
 
                 <div className={styles.btnContainer}>
                   <button className={styles.btnPDF} onClick={downloadPDF} disabled={!(isLoading === false)}>
