@@ -16,7 +16,7 @@ const Dashboard = () => {
   // const [subDivisionYearlyDetails, setsubDivisionYearlyDetails] = useState([]);
 
   const [subDivisionName, setSubDivisionName] = useState('');
-  const [financialYear, setFinancialYear] = useState('2019-20');
+  const [financialYear, setFinancialYear] = useState('');
   const [param, setParam] = useState('');
 
   const [data, setData] = useState({
