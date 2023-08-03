@@ -22,22 +22,21 @@ ChartJS.register(
   Legend,
 )
 
-const BarDiagram = ({ inputData }) => {
+
+const BarDiagram = ({ subDivisionName, financialYear, param }) => {
   const [subDivisionYearlyDetails, setsubDivisionYearlyDetails] = useState([]);
 
   useEffect(() => {
-
     const getYearlyPerformanceDetail = async () => {
-
       try {
         const res = await axios.get(
-          `https://apdcl-site-server.onrender.com/api/v1/subdivision/yearlydetails?subDivisionName=${inputData.subDivisionName}&financialYear=${inputData.financialYear}`,
+          `https://apdcl-site-server.onrender.com/api/v1/subdivision/yearlydetails?subDivisionName=${subDivisionName}&financialYear=${financialYear}`,
           {
             headers: {
               'Content-Type': 'application/json',
             }
           }
-        )
+        );
 
         const data = res.data.updatedSubDivisions;
         const sortedData = data.sort(sortByMonthAndYear);
@@ -46,25 +45,23 @@ const BarDiagram = ({ inputData }) => {
 
         setTimeout(() => {
           window.scrollBy(0, 700);
-        }, 200)
+        }, 200);
       } catch (error) {
         console.log(error.message);
       }
-    }
+    };
 
     getYearlyPerformanceDetail();
-
-  }, [inputData])
-
+  }, [subDivisionName, financialYear]);
 
   const months = subDivisionYearlyDetails.map(entry => `${entry.date.month}, ${entry.date.year}`);
-  const arrValues = subDivisionYearlyDetails.map(entry => entry[inputData.param]);
+  const arrValues = subDivisionYearlyDetails.map(entry => entry[param]);
 
   const chartData = {
     labels: months,
     datasets: [
       {
-        label: inputData.param,
+        label: param,
         data: arrValues,
         backgroundColor: 'aqua',
         borderColor: 'black',
@@ -89,7 +86,7 @@ const BarDiagram = ({ inputData }) => {
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default BarDiagram
+export default BarDiagram;
