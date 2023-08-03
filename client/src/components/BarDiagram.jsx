@@ -42,10 +42,6 @@ const BarDiagram = ({ subDivisionName, financialYear, param }) => {
         const sortedData = data.sort(sortByMonthAndYear);
 
         setsubDivisionYearlyDetails(sortedData);
-
-        setTimeout(() => {
-          window.scrollBy(0, 700);
-        }, 200);
       } catch (error) {
         console.log(error.message);
       }
