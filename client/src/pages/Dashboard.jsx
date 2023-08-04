@@ -5,7 +5,7 @@ const Dashboard = () => {
     <div>
       <Options
         label='Dashboard'
-        circle={true}
+        circle={false}
         division={true}
         subDivision={true}
         link='dashboard'
