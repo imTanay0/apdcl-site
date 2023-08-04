@@ -89,7 +89,7 @@ const Dashboard = () => {
 
       doc.addImage(imgData, 'JPEG', 10, 10, contentWidth - 20, contentHeight - 20); // Adjust image position to fit inside the border
 
-      doc.save('Yearly_Report.pdf');
+      doc.save('Yearly_Graph.pdf');
 
     } catch (error) {
       console.error('Error generating PDF:', error);
@@ -100,7 +100,6 @@ const Dashboard = () => {
       formBtn.style.display = 'block';
     }
   };
-
 
   return (
     <section className={styles.dashboardSection}>
