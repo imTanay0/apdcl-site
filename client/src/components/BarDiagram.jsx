@@ -51,7 +51,15 @@ const BarDiagram = ({ subDivisionName, financialYear, param }) => {
   }, [subDivisionName, financialYear]);
 
   const months = subDivisionYearlyDetails.map(entry => `${entry.date.month}, ${entry.date.year}`);
-  const arrValues = subDivisionYearlyDetails.map(entry => entry[param]);
+  const arrValues = subDivisionYearlyDetails.map(entry => {
+    if (param === 'totalCollection') {
+      return entry.totalCollectionIRCA;
+    } else if (param === 'currentDemand') {
+      return entry.currentDemandIRCA;
+    }
+    return entry[param];
+  });
+
 
   const chartData = {
     labels: months,

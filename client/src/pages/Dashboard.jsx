@@ -48,7 +48,7 @@ const Dashboard = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+ 
     setData({
       subDivisionName,
       financialYear,
@@ -89,7 +89,7 @@ const Dashboard = () => {
 
       doc.addImage(imgData, 'JPEG', 10, 10, contentWidth - 20, contentHeight - 20); // Adjust image position to fit inside the border
 
-      doc.save('Yearly_Graph.pdf');
+      doc.save('Sub-Division_Yearly_Graph.pdf');
 
     } catch (error) {
       console.error('Error generating PDF:', error);
@@ -143,8 +143,8 @@ const Dashboard = () => {
             <datalist id='paramOptions'>
               <option value="MUinjection">MU Injection</option>
               <option value="unitBilled">Unit Billed</option>
-              <option value="totalCollectionIRCA">Total Collection including IRCA</option>
-              <option value="currentDemandIRCA">Current Demand including IRCA</option>
+              <option value="totalCollection">Total Collection including IRCA</option>
+              <option value="currentDemand">Current Demand including IRCA</option>
               <option value="CE">Collection Efficiency</option>
               <option value="BE">Billing Efficiency</option>
               <option value="ABR">Average Billing Rate</option>
