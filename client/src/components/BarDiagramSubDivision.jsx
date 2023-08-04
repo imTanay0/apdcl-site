@@ -12,7 +12,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 
 import sortByMonthAndYear from '../utils/sortMonthlyYearly';
-import styles from '../css/barDiagram.module.css';
+import styles from '../css/BarDiagramSubDivision.module.css';
 
 ChartJS.register(
   BarElement,
@@ -23,7 +23,7 @@ ChartJS.register(
 )
 
 
-const BarDiagram = ({ subDivisionName, financialYear, param }) => {
+const BarDiagramSubDivision = ({ subDivisionName, financialYear, param }) => {
   const [subDivisionYearlyDetails, setsubDivisionYearlyDetails] = useState([]);
 
   useEffect(() => {
@@ -93,4 +93,4 @@ const BarDiagram = ({ subDivisionName, financialYear, param }) => {
   );
 };
 
-export default BarDiagram;
+export default BarDiagramSubDivision;

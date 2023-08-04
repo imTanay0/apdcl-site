@@ -24,7 +24,7 @@ const Content = () => {
             <p className={styles.dashboardContent}>
               We are pleased to provide you with a comprehensive tool to track and monitor your performance. The platform will allow you to enter your input parameters and generate real-time status reports, enabling you to make data-driven decisions and optimize your performance.
             </p>
-            <Link className={styles.btnContainer} to='/report'>
+            <Link className={styles.btnContainer} to='/monthly-report'>
               <button className={styles.startButton}>Start</button>
             </Link>
           </div>
