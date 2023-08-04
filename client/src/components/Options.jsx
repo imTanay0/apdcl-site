@@ -9,7 +9,7 @@ const Options = ({ label, circle, division, subDivision, link }) => {
         {circle &&
         <div className={styles.circleDiv}>
           <p>{`Click the button to check ${label} of Circle`}</p>
-          <Link to={`/${link}`} className={styles.btnContainer}><button className={styles.btn}>Explore Now</button></Link>
+          <Link to={`/${link}-circle`} className={styles.btnContainer}><button className={styles.btn}>Explore Now</button></Link>
         </div>}
 
         {division &&
