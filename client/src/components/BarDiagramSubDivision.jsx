@@ -12,7 +12,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 
 import sortByMonthAndYear from '../utils/sortMonthlyYearly';
-import styles from '../css/BarDiagramSubDivision.module.css';
+import styles from '../css/chart.module.css';
 
 ChartJS.register(
   BarElement,
