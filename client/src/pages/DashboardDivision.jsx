@@ -3,31 +3,57 @@ import axios from 'axios';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-// import BarDiagramSubDivision from '../components/BarDiagramSubDivision';
+import DivisionChart from '../components/DivisionChart';
 import styles from '../css/DashboardDivision.module.css';
 
 const DashboardDivision = () => {
+  const [allCircleNames, setAllCircleNames] = useState([]);
   const [allbDivisionNames, setAllDivisionNames] = useState([]);
-
+  const [circleName, setCircleName] = useState('');
   const [divisionName, setDivisionName] = useState('');
   const [financialYear, setFinancialYear] = useState('');
   const [param, setParam] = useState('');
 
-  const [data, setData] = useState({
-    divisionName: '',
-    financialYear: '',
-    param: ''
-  });
+  // const [data, setData] = useState({
+  //   divisionName: '',
+  //   financialYear: '',
+  //   param: ''
+  // });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
 
   useEffect(() => {
+    const getAllCircleNames = async () => {
+      try {
+        const response = await fetch(
+          'https://apdcl-site-server.onrender.com/api/v1/circle/getAllNames',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+
+        const result = await response.json();
+
+        if (result.success) {
+          const allCircleNamesDuplicate = result.circleNames;
+          const uniqueAllCircleNames = [...new Set(allCircleNamesDuplicate)];
+          setAllCircleNames(uniqueAllCircleNames);
+        }
+
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+
     const getAllDivisionNames = async () => {
       try {
         const response = await axios.get(
-          'https://apdcl-site-server.onrender.com/api/v1/subdivision/getnames',
+          `http://localhost:8080/api/v1/division/getallnames?circleName=${circleName}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -35,7 +61,7 @@ const DashboardDivision = () => {
           }
         )
 
-        const data = response.data.subDivisionNames;
+        const data = response.data.divisionNames;
         const uniqueData = [...new Set(data)];
         setAllDivisionNames(uniqueData);
       } catch (error) {
@@ -43,17 +69,18 @@ const DashboardDivision = () => {
       }
     }
 
-    // getAllSubDivisionNames();
-  }, [divisionName, financialYear]);
+    getAllCircleNames();
+    getAllDivisionNames();
+  }, [circleName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
- 
-    setData({
-      divisionName,
-      financialYear,
-      param: param
-    });
+
+    // setData({
+    //   divisionName,
+    //   financialYear,
+    //   param: param
+    // });
 
     setTimeout(() => {
       setIsSubmitted(true);
@@ -89,7 +116,7 @@ const DashboardDivision = () => {
 
       doc.addImage(imgData, 'JPEG', 10, 10, contentWidth - 20, contentHeight - 20); // Adjust image position to fit inside the border
 
-      doc.save('Sub-Division_Yearly_Graph.pdf');
+      doc.save('Division_Yearly_Graph.pdf');
 
     } catch (error) {
       console.error('Error generating PDF:', error);
@@ -108,17 +135,21 @@ const DashboardDivision = () => {
         <div className={styles.mainContainer}>
           <form className={styles.container} onSubmit={handleSubmit}>
             <label htmlFor='circle'>Circle</label>
-            <input 
+            <input
               id='circle'
               list='circleOptions'
               type="text"
               placeholder='Select a Circle'
-              required 
+              value={circleName}
+              onChange={(e) => setCircleName(e.target.value)}
+              required
             />
             <datalist id='circleOptions'>
-              <option value="Circle">Circle</option>
+              {allCircleNames.map((name, idx) => (
+                <option key={idx} value={name}>{name}</option>
+              ))}
             </datalist>
-            
+
             <label>Divisions</label>
             <input
               list='subDivisionOptions1'
@@ -184,7 +215,12 @@ const DashboardDivision = () => {
               )
               : (
                 <main className={styles.diagramContainer}>
-                  {/* <BarDiagramSubDivision subDivisionName={divisionName} financialYear={financialYear} param={data.param} /> */}
+                  <DivisionChart
+                    circleName={circleName}
+                    divisionName={divisionName}
+                    financialYear={financialYear}
+                    param={param}
+                  />
                 </main>
               )
           }
