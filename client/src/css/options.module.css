@@ -34,13 +34,12 @@
 }
 
 .btnContainer {
-  width: 100%;
+  margin-top: 8px;
+  width: fit-content;
 }
 
 .btn {
   padding: 12px;
-  margin: auto;
-  width: 40%;
   font-size: 16px;
   display: block;
   text-align: center;
