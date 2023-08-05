@@ -53,7 +53,7 @@ const DashboardDivision = () => {
     const getAllDivisionNames = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/division/getallnames?circleName=${circleName}`,
+          `https://apdcl-site-server.onrender.com/api/v1/division/getallnames?circleName=${circleName}`,
           {
             headers: {
               'Content-Type': 'application/json',
