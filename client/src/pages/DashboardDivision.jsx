@@ -14,12 +14,6 @@ const DashboardDivision = () => {
   const [financialYear, setFinancialYear] = useState('');
   const [param, setParam] = useState('');
 
-  // const [data, setData] = useState({
-  //   divisionName: '',
-  //   financialYear: '',
-  //   param: ''
-  // });
-
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -75,12 +69,6 @@ const DashboardDivision = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // setData({
-    //   divisionName,
-    //   financialYear,
-    //   param: param
-    // });
 
     setTimeout(() => {
       setIsSubmitted(true);
