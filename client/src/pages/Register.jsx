@@ -10,6 +10,7 @@ const Register = () => {
 
   const submitHandler = async (e) => {
     try {
+      
       e.preventDefault()
 
       console.log(name, email, password)
