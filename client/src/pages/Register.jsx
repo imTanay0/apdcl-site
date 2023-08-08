@@ -16,7 +16,7 @@ const Register = () => {
       console.log(name, email, password)
 
       await axios.post(
-        'http://localhost:8080/api/v1/user/register',
+        'https://apdcl-site-server.onrender.com/api/v1/user/register',
         {
           name,
           email,

@@ -1,5 +1,6 @@
-import React from 'react';
-import styles from '../css/Content.module.css';
+import { Link } from 'react-router-dom';
+
+import styles from '../css/content.module.css';
 
 const Content = () => {
   return (
@@ -23,9 +24,9 @@ const Content = () => {
             <p className={styles.dashboardContent}>
               We are pleased to provide you with a comprehensive tool to track and monitor your performance. The platform will allow you to enter your input parameters and generate real-time status reports, enabling you to make data-driven decisions and optimize your performance.
             </p>
-            <div className={styles.btnContainer}>
+            <Link className={styles.btnContainer} to='/monthly-report'>
               <button className={styles.startButton}>Start</button>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

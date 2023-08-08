@@ -1,0 +1,145 @@
+* {
+  scroll-behavior: smooth;
+}
+
+.DashboardSubDivisionSection {
+  background-color: #f5f5f5;
+}
+
+.downloadSection {
+  width: fit-content;
+  margin: auto;
+}
+
+.headingText {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 50px;
+}
+
+.container {
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.container p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #6b6b6b;
+}
+
+.container label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.container input {
+  margin-bottom: 1rem;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.container input:focus {
+  outline: none;
+  border-color: #6b7ae8;
+}
+
+.horizontalInputs {
+  display: flex;
+  column-gap: 20px;
+}
+
+.horizontalInputs input {
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #01579b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #003f6f;
+}
+
+.diagramContainer {
+  width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.diagramContainer p {
+  padding: 50px 30px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #6b6b6b;
+}
+
+.btnContainer {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.btnPDF {
+  width: 40%;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #01579b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btnPDF:hover {
+  background-color: #003f6f;
+}
+
+.btnPDF:disabled {
+  background-color: #006abb;
+  cursor: no-drop;
+}
+
+@media screen and (max-width: 768px) {
+  .inputFormContainer {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .inputFormContainer input {
+    width: 91.5%;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}

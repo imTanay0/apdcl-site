@@ -5,7 +5,6 @@ import styles from "../css/navbar.module.css";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      {/* <div className={styles.heady}> */}
       <img
         src="https://www.apdcl.org/website/img/apdcl_logo.b56b6858.png"
         alt="APDCL Logo"
@@ -64,13 +63,22 @@ const Navbar = () => {
           <Link to='/'>
             <p className={styles.pageLink}>Home</p>
           </Link>
-          <Link to='/report'>
-            <p className={styles.pageLink}>Report</p>
+          <Link to='/addreport'>
+            <p className={styles.pageLink}>Add Report</p>
+          </Link>
+          <Link to='/monthly-report'>
+            <p className={styles.pageLink}>Monthly Report</p>
+          </Link>
+          <Link to='/yearly-report'>
+            <p className={styles.pageLink}>Yearly Report</p>
+          </Link>
+          <Link to='/dashboard'>
+            <p className={styles.pageLink}>Dashboard</p>
           </Link>
         </div>
       </div>
 
-      <div className={styles.btnContainer}>
+      {/* <div className={styles.btnContainer}>
         <Link to="/register">
           <button className={styles.btn}>Sign up</button>
         </Link>
@@ -78,7 +86,7 @@ const Navbar = () => {
         <Link to="/login">
           <button className={styles.btn}>Sign in</button>
         </Link>
-      </div>
+      </div> */}
     </nav>
   )
 }

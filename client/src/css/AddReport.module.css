@@ -2,23 +2,41 @@
   scroll-behavior: smooth;
 }
 
-.inputFormContainer {
+.addReportSection {
+  padding: 50px 50px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .headingText {
+} */
+
+.formContainer {
+  padding: 20px;
+  margin-top: 30px;
   width: 40%;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
 }
 
-.inputFormContainer label {
+.formContainer p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #6b6b6b;
+}
+
+.formContainer label {
   display: block;
   font-size: 14px;
   margin-bottom: 5px;
 }
 
-.inputFormContainer input {
+.formContainer input {
   width: 95.5%;
   margin-bottom: 1rem;
   padding: 10px;
@@ -28,7 +46,7 @@
   color: #333;
 }
 
-.inputFormContainer input:focus {
+.formContainer input:focus {
   outline: none;
   border-color: #6b7ae8;
 }
@@ -52,12 +70,12 @@
 }
 
 @media screen and (max-width: 768px) {
-  .inputFormContainer {
+  .formContainer {
     width: 80%;
     margin: 0 auto;
   }
 
-  .inputFormContainer input {
+  .formContainer input {
     width: 91.5%;
   }
 

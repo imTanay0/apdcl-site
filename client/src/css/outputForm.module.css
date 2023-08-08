@@ -17,6 +17,7 @@ h2 {
 .container p {
   text-align: center;
   font-size: 1.2rem;
+  color: #6b6b6b;
 }
 
 .container label {
@@ -38,4 +39,15 @@ h2 {
 .container input:focus {
   outline: none;
   border-color: #6b7ae8;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .container input {
+    width: 91.5%;
+  }
 }
