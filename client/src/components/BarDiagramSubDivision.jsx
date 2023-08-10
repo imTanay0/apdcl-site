@@ -22,7 +22,6 @@ ChartJS.register(
   Legend,
 )
 
-
 const BarDiagramSubDivision = ({ subDivisionName, financialYear, param }) => {
   const [subDivisionYearlyDetails, setsubDivisionYearlyDetails] = useState([]);
 
