@@ -11,7 +11,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-import styles from '../css/BarDiagramSubDivision.module.css';
+import styles from '../css/chart.module.css';
 
 ChartJS.register(
   BarElement,

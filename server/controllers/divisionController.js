@@ -174,7 +174,7 @@ export const GetYearlyDivisionsDetails = async (req, res) => {
       });
     }
 
-    // Todo1 - Find all sub divisions on the financial year
+    // Find all sub divisions on the financial year
     const subDivisions = await SubDivision.find({
       "division.name": divisionName,
       $or: [
@@ -210,7 +210,7 @@ export const GetYearlyDivisionsDetails = async (req, res) => {
 
     const sortedSubDivisions = subDivisions.sort(sortByMonthAndYear);
 
-    // Todo2 - Calculate (sum of the sub divisions) = divisions according to the months
+    // Calculate (sum of the sub divisions) = divisions according to the months
     const divisionResult = [];
 
     sortedSubDivisions.forEach((subDivision) => {
@@ -278,7 +278,6 @@ export const GetYearlyDivisionsDetails = async (req, res) => {
       }
     });
 
-    // Todo3 - Return the division result
     res.status(200).json({
       updatedDivisionResult,
     });
