@@ -98,7 +98,7 @@ const AddReport = () => {
         alert(`Failed to Submit the Form: ${result.message}`)
       }
     } catch (error) {
-      alert(error.message);
+      console.log(error.message);
     }
   }
 
@@ -238,7 +238,7 @@ const AddReport = () => {
         </button>
       </form>
 
-      <div className={styles.formContainer}>
+      {/* <div className={styles.formContainer}>
         {
           !subDivisionDetail
             ? (
@@ -260,7 +260,7 @@ const AddReport = () => {
               </div>
             )
         }
-      </div>
+      </div> */}
     </section>
   )
 }
